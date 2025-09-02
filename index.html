@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta3 - Assistenz-Software, die jeder versteht</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <img src="https://delta3.io/wp-content/uploads/2023/05/cropped-cropped-logo-transparent_LONG_22_05_600dpi-2.png" alt="Delta3" class="logo">
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Lösungen <span class="material-icons dropdown-arrow">expand_more</span></a>
+                    <div class="dropdown-content">
+                        <a href="#d3-editor">D3 Editor</a>
+                        <a href="#d3-operations">D3 Operations</a>
+                        <a href="#d3-devices">D3 Devices</a>
+                        <a href="#d3-app">D3 App</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Anwendungen <span class="material-icons dropdown-arrow">expand_more</span></a>
+                    <div class="dropdown-content">
+                        <a href="#bildung">Bildung</a>
+                        <a href="#inklusion">Inklusion</a>
+                        <a href="#industrie">Industrie</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">Über uns</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Kontakt</a>
+                </li>
+            </ul>
+            
+            <div class="nav-cta">
+                <div class="language-switcher dropdown">
+                    <button class="lang-current">
+                        <span class="current-lang">🇩🇪 DE</span>
+                        <span class="material-icons dropdown-arrow">expand_more</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option" data-lang="en">🇬🇧 EN</button>
+                    </div>
+                </div>
+                <a href="#demo" class="cta-button primary" data-translate="nav-demo">Demo vereinbaren</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Carousel Section -->
+    <section class="hero-carousel">
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <!-- Slide 1: ASSISTENZ-SOFTWARE, DIE JEDER VERSTEHT -->
+                <div class="carousel-slide active">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h1 class="slide-title">ASSISTENZ-SOFTWARE, DIE JEDER VERSTEHT</h1>
+                            <p class="slide-subtitle">Einfach erklärt. Einfach genutzt.</p>
+                            <div class="slide-actions">
+                                <a href="#demo" class="cta-button primary">Demo vereinbaren</a>
+                                <a href="#mehr" class="cta-button secondary">Mehr erfahren</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="visual-placeholder">
+                                <span class="material-icons visual-icon">accessibility</span>
+                                <p>Barrierefreie Technik</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: ASSISTENZ-SOFTWARE FÜR JEDE ANWENDUNG -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h1 class="slide-title">ASSISTENZ-SOFTWARE FÜR JEDE ANWENDUNG</h1>
+                            <p class="slide-subtitle">Für Bildung, Inklusion & Industrie.</p>
+                            <div class="slide-actions">
+                                <a href="#demo" class="cta-button primary">Demo vereinbaren</a>
+                                <a href="#loesungen" class="cta-button secondary">Lösungen entdecken</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="visual-placeholder">
+                                <span class="material-icons visual-icon">business</span>
+                                <p>Vielseitig einsetzbar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: EINFACHE ASSISTENZ -->
+                <div class="carousel-slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <h1 class="slide-title">EINFACHE ASSISTENZ</h1>
+                            <p class="slide-subtitle">Digitale Barrieren abbauen, Menschen befähigen.</p>
+                            <div class="slide-actions">
+                                <a href="#demo" class="cta-button primary">Demo vereinbaren</a>
+                                <a href="#warum" class="cta-button secondary">Warum Delta3?</a>
+                            </div>
+                        </div>
+                        <div class="slide-visual">
+                            <div class="visual-placeholder">
+                                <span class="material-icons visual-icon">support_agent</span>
+                                <p>Einfache Assistenz</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Navigation -->
+            <div class="carousel-nav">
+                <button class="carousel-btn prev" aria-label="Vorherige Folie">
+                    <span class="material-icons">chevron_left</span>
+                </button>
+                <div class="carousel-indicators">
+                    <button class="indicator active" data-slide="0"></button>
+                    <button class="indicator" data-slide="1"></button>
+                    <button class="indicator" data-slide="2"></button>
+                </div>
+                <button class="carousel-btn next" aria-label="Nächste Folie">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Einfache Assistenz Section -->
+    <section class="einfache-assistenz" id="einfache-assistenz">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="section-header">
+                    <h2 class="section-title">EINFACHE ASSISTENZ</h2>
+                </div>
+                
+                <div class="assistenz-content">
+                    <p class="lead-text">
+                        Digitale Technik wird oft als Barriere empfunden, anstatt Barrieren abzubauen. 
+                        Zu kompliziert, zu teuer, zu unflexibel – und am Ende bleiben die Menschen außen vor.
+                    </p>
+                    
+                    <p class="main-text">
+                        Mit den Lösungen von <strong>delta3</strong> wird Assistenz endlich greifbar: 
+                        <strong>einfach erklärt</strong>, <strong>sofort nutzbar</strong> und für 
+                        <strong>alle verständlich</strong>. Ob in Werkstätten, Inklusionsbetrieben oder 
+                        der Industrie – wir schaffen Systeme, die Menschen befähigen und Teilhabe ermöglichen.
+                    </p>
+                    
+                    <div class="benefits-preview">
+                        <div class="benefit-item">
+                            <span class="material-icons">check_circle</span>
+                            <span>Klare Nutzerführung</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="material-icons">check_circle</span>
+                            <span>Flexible Anpassung</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="material-icons">check_circle</span>
+                            <span>Nachhaltige Entlastung</span>
+                        </div>
+                    </div>
+                    
+                    <div class="assistenz-actions">
+                        <a href="#loesungen" class="cta-button primary">Lösungen entdecken</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
+        <div class="container">
+            <h2 class="section-title">Vertrauen Sie auf bewährte Partnerschaften</h2>
+            <div class="partners-content">
+                <img src="partners.jpeg" alt="Unsere Partner: elbe werkstätten, Werkkreis Gütersloh, inIT TH OWL, Caritas, HARZ-WESER-WERKE, LWL, GrünBau, KIEBITZGOF, cbw, CITT, hotel marco polo, CAYAGO, Bundesministerium für Forschung Technologie und Raumfahrt, ST. ROCHUS-HOSPITAL TELGTE, TH OWL, garage33, GLW, Gemeinsame Wissenschaftskonferenz GWK, BIBB Bundesinstitut für Berufsbildung, MITTELSTAND INNOVATIV & DIGITAL, FOUNDERS FOUNDATION" class="partners-image">
+                <p class="partners-description">
+                    Wir arbeiten mit führenden Organisationen aus Bildung, Forschung, Inklusion und Industrie zusammen, 
+                    um innovative Assistenz-Lösungen zu entwickeln und zu implementieren.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Unsere Lösungen</h2>
+            <div class="products-grid">
+                <!-- D3 Editor -->
+                <div class="product-card" id="d3-editor">
+                    <div class="product-icon">
+                        <span class="material-icons">edit_note</span>
+                    </div>
+                    <div class="product-header">
+                        <h3>D3 Editor</h3>
+                        <span class="product-badge">Inhaltserstellung</span>
+                    </div>
+                    <div class="product-description">
+                        <p>Einfache Erstellung und Bearbeitung von assistiven Inhalten mit intuitiver Benutzeroberfläche.</p>
+                        <ul class="feature-list">
+                            <li>Visuelle Content-Erstellung</li>
+                            <li>Barrierefreie Formate</li>
+                            <li>Einfache Bedienung</li>
+                            <li>Mehrere Ausgabeformate</li>
+                        </ul>
+                    </div>
+                    <div class="product-cta">
+                        <a href="#demo" class="cta-button primary">Testen</a>
+                    </div>
+                </div>
+
+                <!-- D3 Operations -->
+                <div class="product-card" id="d3-operations">
+                    <div class="product-icon">
+                        <span class="material-icons">settings</span>
+                    </div>
+                    <div class="product-header">
+                        <h3>D3 Operations</h3>
+                        <span class="product-badge">Verwaltung</span>
+                    </div>
+                    <div class="product-description">
+                        <p>Zentrale Verwaltung und Steuerung aller Assistenz-Systeme und Arbeitsprozesse.</p>
+                        <ul class="feature-list">
+                            <li>Prozess-Management</li>
+                            <li>Team-Koordination</li>
+                            <li>Auswertungen & Reports</li>
+                            <li>System-Integration</li>
+                        </ul>
+                    </div>
+                    <div class="product-cta">
+                        <a href="#demo" class="cta-button primary">Testen</a>
+                    </div>
+                </div>
+
+                <!-- D3 Devices -->
+                <div class="product-card" id="d3-devices">
+                    <div class="product-icon">
+                        <span class="material-icons">devices</span>
+                    </div>
+                    <div class="product-header">
+                        <h3>D3 Devices</h3>
+                        <span class="product-badge">Hardware</span>
+                    </div>
+                    <div class="product-description">
+                        <p>Speziell angepasste Hardware-Lösungen für optimale Barrierefreiheit und Benutzerfreundlichkeit.</p>
+                        <ul class="feature-list">
+                            <li>Barrierefreie Bedienung</li>
+                            <li>Robuste Bauweise</li>
+                            <li>Einfache Installation</li>
+                            <li>Wartungsarm</li>
+                        </ul>
+                    </div>
+                    <div class="product-cta">
+                        <a href="#demo" class="cta-button primary">Testen</a>
+                    </div>
+                </div>
+
+                <!-- D3 App -->
+                <div class="product-card" id="d3-app">
+                    <div class="product-icon">
+                        <span class="material-icons">phone_android</span>
+                    </div>
+                    <div class="product-header">
+                        <h3>D3 App</h3>
+                        <span class="product-badge">Mobile Lösung</span>
+                    </div>
+                    <div class="product-description">
+                        <p>Mobile Anwendung für assistive Unterstützung direkt am Arbeitsplatz und unterwegs.</p>
+                        <ul class="feature-list">
+                            <li>iOS & Android</li>
+                            <li>Offline-Funktionen</li>
+                            <li>Sprachsteuerung</li>
+                            <li>Einfache Navigation</li>
+                        </ul>
+                    </div>
+                    <div class="product-cta">
+                        <a href="#demo" class="cta-button primary">Testen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Delta3 Section -->
+    <section class="why-delta3" id="warum">
+        <div class="container">
+            <h2 class="section-title">Warum Delta3?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <span class="material-icons">accessibility</span>
+                    </div>
+                    <h3>Barrierefrei</h3>
+                    <p>Unsere Lösungen sind von Grund auf barrierefrei entwickelt und für alle Menschen zugänglich.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <span class="material-icons">psychology</span>
+                    </div>
+                    <h3>Intuitiv</h3>
+                    <p>Einfache Bedienung ohne komplizierte Schulungen – jeder kann sofort produktiv arbeiten.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <span class="material-icons">tune</span>
+                    </div>
+                    <h3>Flexibel</h3>
+                    <p>Individuelle Anpassung an Ihre spezifischen Anforderungen und Arbeitsprozesse.</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <span class="material-icons">support</span>
+                    </div>
+                    <h3>Unterstützend</h3>
+                    <p>Umfassender Support und kontinuierliche Weiterentwicklung für Ihren Erfolg.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/CTA Section -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Bereit für einfache Assistenz?</h2>
+                <p>Entdecken Sie, wie Delta3 Ihre Arbeitsprozesse vereinfachen und Barrieren abbauen kann.</p>
+                <div class="cta-buttons">
+                    <a href="#demo" class="cta-button primary large">Demo vereinbaren</a>
+                    <a href="#contact" class="cta-button secondary large">Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Lösungen</h3>
+                    <ul>
+                        <li><a href="#d3-editor">D3 Editor</a></li>
+                        <li><a href="#d3-operations">D3 Operations</a></li>
+                        <li><a href="#d3-devices">D3 Devices</a></li>
+                        <li><a href="#d3-app">D3 App</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Anwendungen</h3>
+                    <ul>
+                        <li><a href="#bildung">Bildung</a></li>
+                        <li><a href="#inklusion">Inklusion</a></li>
+                        <li><a href="#industrie">Industrie</a></li>
+                        <li><a href="#werkstaetten">Werkstätten</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Unternehmen</h3>
+                    <ul>
+                        <li><a href="#ueber-uns">Über uns</a></li>
+                        <li><a href="#partner">Partner</a></li>
+                        <li><a href="#karriere">Karriere</a></li>
+                        <li><a href="#news">News</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#hilfe">Hilfe</a></li>
+                        <li><a href="#dokumentation">Dokumentation</a></li>
+                        <li><a href="#schulungen">Schulungen</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section contact-info">
+                    <h3>Kontakt</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="material-icons contact-icon">location_on</span>
+                            <span>Deutschland</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="material-icons contact-icon">email</span>
+                            <span>info@delta3.io</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="material-icons contact-icon">phone</span>
+                            <span>+49 XXX XXXXXXX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="#impressum">Impressum</a>
+                    <a href="#datenschutz">Datenschutz</a>
+                    <a href="#agb">AGB</a>
+                </div>
+                <div class="footer-brand">
+                    <p>&copy; 2024 Delta3. Alle Rechte vorbehalten. <em>Einfache Assistenz für alle.</em></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
