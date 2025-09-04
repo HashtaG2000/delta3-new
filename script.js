@@ -3,11 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hero Carousel Functionality
     const initCarousel = () => {
+        // Wait for DOM elements to be available
         const carousel = document.querySelector('.carousel-slides');
         const slides = document.querySelectorAll('.carousel-slide');
         const indicators = document.querySelectorAll('.indicator');
         const prevBtn = document.querySelector('.carousel-btn.prev');
         const nextBtn = document.querySelector('.carousel-btn.next');
+        const carouselContainer = document.querySelector('.hero-carousel');
+        
+        // Check if all required elements exist
+        if (!carousel || !slides.length || !indicators.length || !prevBtn || !nextBtn || !carouselContainer) {
+            console.log('Carousel elements not found, retrying...');
+            setTimeout(initCarousel, 100);
+            return;
+        }
         
         let currentSlide = 0;
         const totalSlides = slides.length;
@@ -40,41 +49,50 @@ document.addEventListener('DOMContentLoaded', function() {
             updateSlide(prev);
         };
         
-        // Auto slide functionality
+        // Auto slide functionality with consistent timing
         const startAutoSlide = () => {
-            autoSlideInterval = setInterval(nextSlide, 5000); // 5 seconds
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 6000); // Consistent 6 seconds
         };
         
         const stopAutoSlide = () => {
-            clearInterval(autoSlideInterval);
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
         };
         
         // Event listeners
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopAutoSlide();
-            setTimeout(startAutoSlide, 10000); // Restart after 10 seconds
-        });
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 8000); // Restart after 8 seconds
+            });
+        }
         
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            stopAutoSlide();
-            setTimeout(startAutoSlide, 10000); // Restart after 10 seconds
-        });
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 8000); // Restart after 8 seconds
+            });
+        }
         
         // Indicator clicks
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 updateSlide(index);
                 stopAutoSlide();
-                setTimeout(startAutoSlide, 10000); // Restart after 10 seconds
+                setTimeout(startAutoSlide, 8000); // Restart after 8 seconds
             });
         });
         
         // Pause on hover
-        const carouselContainer = document.querySelector('.hero-carousel');
         carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-        carouselContainer.addEventListener('mouseleave', startAutoSlide);
+        carouselContainer.addEventListener('mouseleave', () => {
+            setTimeout(startAutoSlide, 1000); // Small delay before restarting
+        });
         
         // Touch/swipe support for mobile
         let startX = 0;
@@ -106,11 +124,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            setTimeout(startAutoSlide, 10000);
+            setTimeout(startAutoSlide, 8000);
         });
         
-        // Start auto slide
-        startAutoSlide();
+        // Initialize first slide
+        updateSlide(0);
+        
+        // Start auto slide after a short delay
+        setTimeout(startAutoSlide, 6000); // First auto-advance after 6 seconds
     };
     
     // Mobile Navigation Toggle
@@ -118,10 +139,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const nav = document.querySelector('.nav-container');
         const navMenu = document.querySelector('.nav-menu');
         
+        // Check if elements exist
+        if (!nav || !navMenu) {
+            console.log('Navigation elements not found for mobile menu');
+            return;
+        }
+        
+        // Don't create button if it already exists
+        if (document.querySelector('.mobile-menu-btn')) {
+            return;
+        }
+        
         // Create mobile menu button
         const mobileMenuBtn = document.createElement('button');
         mobileMenuBtn.className = 'mobile-menu-btn';
         mobileMenuBtn.innerHTML = '<span class="material-icons">menu</span>';
+        mobileMenuBtn.setAttribute('aria-label', 'Toggle menu');
         mobileMenuBtn.style.cssText = `
             display: none;
             background: none;
@@ -129,67 +162,128 @@ document.addEventListener('DOMContentLoaded', function() {
             font-size: 1.5rem;
             color: #0c2340;
             cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
         `;
         
-        nav.appendChild(mobileMenuBtn);
+        // Create mobile search button (separate from hamburger menu)
+        const mobileSearchBtn = document.createElement('button');
+        mobileSearchBtn.className = 'mobile-search-btn-header';
+        mobileSearchBtn.innerHTML = '<span class="material-icons">search</span>';
+        mobileSearchBtn.setAttribute('aria-label', 'Search');
+        mobileSearchBtn.style.cssText = `
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #0c2340;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        `;
+        
+        mobileSearchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Trigger the same search dialog as desktop
+            const searchDialog = document.querySelector('.nav-search');
+            if (searchDialog) {
+                searchDialog.click();
+            }
+        });
+        
+        // Create a container for mobile buttons to keep them together
+        const mobileButtonGroup = document.createElement('div');
+        mobileButtonGroup.className = 'mobile-button-group';
+        mobileButtonGroup.appendChild(mobileMenuBtn);
+        mobileButtonGroup.appendChild(mobileSearchBtn);
+        
+        // Insert button group at the end of nav container (right side)
+        nav.appendChild(mobileButtonGroup);
         
         // Toggle mobile menu
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             navMenu.classList.toggle('mobile-active');
             const icon = mobileMenuBtn.querySelector('.material-icons');
             icon.textContent = navMenu.classList.contains('mobile-active') ? 'close' : 'menu';
+            
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('mobile-active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
         
-        // Add mobile styles
-        const mobileStyles = document.createElement('style');
-        mobileStyles.textContent = `
-            @media (max-width: 968px) {
-                .mobile-menu-btn {
-                    display: block !important;
-                }
-                
-                .nav-menu {
-                    position: fixed;
-                    top: 80px;
-                    left: -100%;
-                    width: 100%;
-                    height: calc(100vh - 80px);
-                    background: white;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    padding: 2rem;
-                    transition: left 0.3s ease;
-                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                    z-index: 999;
-                }
-                
-                .nav-menu.mobile-active {
-                    left: 0;
-                }
-                
-                .nav-item {
-                    width: 100%;
-                    margin: 1rem 0;
-                }
-                
-                .nav-cta {
-                    display: none;
-                }
-                
-                .dropdown-content {
-                    position: static;
-                    opacity: 1;
-                    visibility: visible;
-                    transform: none;
-                    box-shadow: none;
-                    background: #f8f9fa;
-                    margin-top: 0.5rem;
-                    padding: 1rem;
-                    border-radius: 8px;
+        // Close menu when clicking on nav links and convert dropdown links for mobile
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            // Convert dropdown navigation to direct links for mobile
+            if (link.getAttribute('href') === '#' || !link.getAttribute('href')) {
+                const text = link.textContent.trim();
+                if (text.includes('Produkte') || text.includes('Products')) {
+                    link.setAttribute('href', '#products-page');
+                } else if (text.includes('Wissen') || text.includes('Knowledge')) {
+                    link.setAttribute('href', '#knowledge-page');
+                } else if (text.includes('Service')) {
+                    link.setAttribute('href', '#service-page');
+                } else if (text.includes('Kontakt') || text.includes('Contact')) {
+                    link.setAttribute('href', '#contact-page');
                 }
             }
-        `;
-        document.head.appendChild(mobileStyles);
+            
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('mobile-active');
+                const icon = mobileMenuBtn.querySelector('.material-icons');
+                icon.textContent = 'menu';
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && navMenu.classList.contains('mobile-active')) {
+                navMenu.classList.remove('mobile-active');
+                const icon = mobileMenuBtn.querySelector('.material-icons');
+                icon.textContent = 'menu';
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Create mobile-specific navigation items
+        createMobileNavItems();
+    };
+    
+    const createMobileNavItems = () => {
+        const navMenu = document.querySelector('.nav-menu');
+        if (!navMenu) return;
+        
+        // Check if mobile items already exist
+        if (navMenu.querySelector('.mobile-nav-items')) return;
+        
+        // Create container for mobile-specific items
+        const mobileNavItems = document.createElement('div');
+        mobileNavItems.className = 'mobile-nav-items';
+        
+        
+        // Add Demo vereinbaren button
+        const demoBtn = document.createElement('a');
+        demoBtn.className = 'mobile-demo-btn';
+        demoBtn.href = '#demo';
+        demoBtn.textContent = 'Demo vereinbaren';
+        
+        // Add Leichte Sprache link
+        const leichteLink = document.createElement('a');
+        leichteLink.className = 'mobile-nav-item nav-accessibility';
+        leichteLink.href = '#leichte-sprache';
+        leichteLink.textContent = 'Leichte Sprache';
+        
+        // Append all items
+        mobileNavItems.appendChild(demoBtn);
+        mobileNavItems.appendChild(leichteLink);
+        
+        // Add to nav menu
+        navMenu.appendChild(mobileNavItems);
     };
     
     // Smooth Scrolling for Anchor Links
@@ -538,54 +632,144 @@ document.addEventListener('DOMContentLoaded', function() {
         // Translation dictionary
         const translations = {
             de: {
+                // Navigation
+                'nav-produkte': 'Produkte',
+                'nav-wissen': 'Wissen',
+                'nav-branchen': 'Branchen',
+                'nav-service': 'Service & Support',
+                'nav-kontakt': 'Kontakt',
                 'nav-demo': 'Demo vereinbaren',
-                'nav-solutions': 'Lösungen',
-                'nav-applications': 'Anwendungen',
-                'nav-about': 'Über uns',
-                'nav-contact': 'Kontakt',
+                'nav-leichte-sprache': 'Leichte Sprache',
+                
+                // Hero Section
                 'hero-title-1': 'ASSISTENZ-SOFTWARE, DIE JEDER VERSTEHT',
                 'hero-subtitle-1': 'Einfach erklärt. Einfach genutzt.',
                 'hero-title-2': 'ASSISTENZ-SOFTWARE FÜR JEDE ANWENDUNG',
                 'hero-subtitle-2': 'Für Bildung, Inklusion & Industrie.',
-                'hero-title-3': 'EINFACHE ASSISTENZ',
-                'hero-subtitle-3': 'Digitale Barrieren abbauen, Menschen befähigen.',
-                'cta-demo': 'Demo vereinbaren',
+                'hero-title-3': 'ASSISTENZ-SOFTWARE, DIE IN 3 SCHRITTEN EINSETZBAR IST',
+                'hero-subtitle-3': 'Digital. Flexibel. Verständlich.',
                 'cta-learn': 'Mehr erfahren',
-                'cta-solutions': 'Lösungen entdecken',
-                'cta-why': 'Warum Delta3?',
-                'section-assistenz': 'EINFACHE ASSISTENZ',
-                'section-partners': 'Vertrauen Sie auf bewährte Partnerschaften',
-                'section-solutions': 'Unsere Lösungen',
-                'section-why': 'Warum Delta3?',
+                
+                // About Section
+                'about-title': 'ORIENTIERUNG GEBEN. SELBSTSTÄNDIGKEIT FÖRDERN. PROZESSE ERLEICHTERN.',
+                'about-text': 'Damit Arbeit gelingt: Unsere Lösungen stellen Wissen im Arbeitsfluss bereit, erklären Aufgaben Schritt für Schritt und ermöglichen Selbstständigkeit – im Bereich Bildung, Inklusion & Industrie.',
+                
+                // Action Cards
+                'card1-title': 'Produkte Entdecken',
+                'card1-desc': 'Unsere modularen Lösungen machen Arbeit verständlich, sicher und dokumentierbar – für Bildung, Inklusion & Industrie.',
+                'card1-link': 'Zu Den Produkten',
+                'card2-title': 'WISSEN VERTIEFEN',
+                'card2-desc': 'Ob Assistenz, Lean oder Gamification – unsere Schulungen geben Impulse, wie Arbeit einfacher, inklusiver und nachhaltiger gelingt.',
+                'card2-link': 'Zu Den Schulungen',
+                'card3-title': 'PERSPEKTIVEN ERWEITERN',
+                'card3-desc': 'Im Blog berichten wir über Ideen, Geschichten und Praxisbeispiele, die zeigen, wie Assistenz Menschen in Arbeit und Lernen stärkt.',
+                'card3-link': 'Zum Blog',
+                'card4-title': 'UNTERSTÜTZUNG ERHALTEN',
+                'card4-desc': 'Ob Fragen, technische Unterstützung oder individuelle Beratung: Wir sind für Sie da, wenn Sie Hilfe brauchen.',
+                'card4-link': 'Zum Support',
+                
+                // Partners Section
+                'partners-title': 'AUSWAHL UNSERER PARTNER',
+                'partners-desc': 'Wir arbeiten mit führenden Organisationen aus Bildung, Forschung, Inklusion und Industrie zusammen, um innovative Assistenz-Lösungen zu entwickeln und zu implementieren.',
+                
+                // Why Delta3 Section
+                'why-title': 'Why Delta3?',
+                'why1-title': 'EINFACHE ASSISTENZ',
+                'why1-item1': 'Keine Vorkenntnisse nötig – sofort verständlich',
+                'why1-item2': 'Inhalte in Text, Bild oder Video – angepasst an die Zielgruppe',
+                'why1-item3': '„Aufklappen und loslegen" statt lange Einrichtungszeiten',
+                'why2-title': 'FLEXIBEL EINSETZBAR',
+                'why2-item1': 'Ein System für unterschiedliche Arbeitsplätze und Aufgaben',
+                'why2-item2': 'Portabel – einfach mitnehmen, wo es gebraucht wird oder Stationär installiert',
+                'why2-item3': 'Leicht an neue Prozesse oder Aufträge anpassbar',
+                'why3-title': 'FÜR ALLE ZIELGRUPPEN',
+                'why3-item1': 'Entwickelt für Werkstätten, Bildungseinrichtungen & Industrie',
+                'why3-item2': 'Fördert Teilhabe, Effizienz und Zusammenarbeit',
+                'why3-item3': 'Einfach zugänglich – unabhängig von Vorkenntnissen',
+                
+                // Reviews Section
+                'reviews-title': 'STIMMEN UNSERER KUNDEN',
+                'reviews-subtitle': 'Echte Geschichten, echte Wirkung: Unsere Kund*innen teilen, wie einfache Assistenz-Software Barrieren abbaut und Zusammenarbeit stärkt.',
+                
+                // Contact CTA
                 'cta-final-title': 'Bereit für einfache Assistenz?',
                 'cta-final-text': 'Entdecken Sie, wie Delta3 Ihre Arbeitsprozesse vereinfachen und Barrieren abbauen kann.',
-                'modal-title': 'Demo vereinbaren',
-                'modal-submit': 'Demo anfragen'
+                'cta-demo-btn': 'Demo vereinbaren',
+                'cta-contact-btn': 'Kontakt aufnehmen',
+                
+                // Footer
+                'footer-company': 'delta3 GmbH',
+                'footer-copyright': 'Copyright © delta3 GmbH 2025'
             },
             en: {
+                // Navigation
+                'nav-produkte': 'Products',
+                'nav-wissen': 'Knowledge',
+                'nav-branchen': 'Industries',
+                'nav-service': 'Service & Support',
+                'nav-kontakt': 'Contact',
                 'nav-demo': 'Book Demo',
-                'nav-solutions': 'Solutions',
-                'nav-applications': 'Applications',
-                'nav-about': 'About',
-                'nav-contact': 'Contact',
+                'nav-leichte-sprache': 'Easy Language',
+                
+                // Hero Section
                 'hero-title-1': 'ASSISTIVE SOFTWARE EVERYONE UNDERSTANDS',
                 'hero-subtitle-1': 'Simply explained. Simply used.',
                 'hero-title-2': 'ASSISTIVE SOFTWARE FOR EVERY APPLICATION',
                 'hero-subtitle-2': 'For Education, Inclusion & Industry.',
-                'hero-title-3': 'SIMPLE ASSISTANCE',
-                'hero-subtitle-3': 'Breaking down digital barriers, empowering people.',
-                'cta-demo': 'Book Demo',
+                'hero-title-3': 'ASSISTIVE SOFTWARE DEPLOYABLE IN 3 STEPS',
+                'hero-subtitle-3': 'Digital. Flexible. Understandable.',
                 'cta-learn': 'Learn More',
-                'cta-solutions': 'Discover Solutions',
-                'cta-why': 'Why Delta3?',
-                'section-assistenz': 'SIMPLE ASSISTANCE',
-                'section-partners': 'Trust in Proven Partnerships',
-                'section-solutions': 'Our Solutions',
-                'section-why': 'Why Delta3?',
+                
+                // About Section
+                'about-title': 'PROVIDE GUIDANCE. PROMOTE INDEPENDENCE. FACILITATE PROCESSES.',
+                'about-text': 'Making work successful: Our solutions provide knowledge in the workflow, explain tasks step by step and enable independence – in education, inclusion & industry.',
+                
+                // Action Cards
+                'card1-title': 'Discover Products',
+                'card1-desc': 'Our modular solutions make work understandable, safe and documentable – for education, inclusion & industry.',
+                'card1-link': 'To Products',
+                'card2-title': 'DEEPEN KNOWLEDGE',
+                'card2-desc': 'Whether assistance, lean or gamification – our training provides impulses on how work becomes simpler, more inclusive and sustainable.',
+                'card2-link': 'To Training',
+                'card3-title': 'EXPAND PERSPECTIVES',
+                'card3-desc': 'In our blog we report on ideas, stories and practical examples that show how assistance strengthens people in work and learning.',
+                'card3-link': 'To Blog',
+                'card4-title': 'GET SUPPORT',
+                'card4-desc': 'Whether questions, technical support or individual consulting: We are here for you when you need help.',
+                'card4-link': 'To Support',
+                
+                // Partners Section
+                'partners-title': 'SELECTION OF OUR PARTNERS',
+                'partners-desc': 'We work together with leading organizations from education, research, inclusion and industry to develop and implement innovative assistance solutions.',
+                
+                // Why Delta3 Section
+                'why-title': 'Why Delta3?',
+                'why1-title': 'SIMPLE ASSISTANCE',
+                'why1-item1': 'No prior knowledge required – immediately understandable',
+                'why1-item2': 'Content in text, image or video – adapted to the target group',
+                'why1-item3': '"Unfold and get started" instead of long setup times',
+                'why2-title': 'FLEXIBLY DEPLOYABLE',
+                'why2-item1': 'One system for different workplaces and tasks',
+                'why2-item2': 'Portable – easy to take where needed or stationary installation',
+                'why2-item3': 'Easy to adapt to new processes or orders',
+                'why3-title': 'FOR ALL TARGET GROUPS',
+                'why3-item1': 'Developed for workshops, educational institutions & industry',
+                'why3-item2': 'Promotes participation, efficiency and cooperation',
+                'why3-item3': 'Easily accessible – regardless of prior knowledge',
+                
+                // Reviews Section
+                'reviews-title': 'VOICES OF OUR CUSTOMERS',
+                'reviews-subtitle': 'Real stories, real impact: Our customers share how simple assistance software breaks down barriers and strengthens collaboration.',
+                
+                // Contact CTA
                 'cta-final-title': 'Ready for Simple Assistance?',
                 'cta-final-text': 'Discover how Delta3 can simplify your workflows and break down barriers.',
-                'modal-title': 'Book Demo',
-                'modal-submit': 'Request Demo'
+                'cta-demo-btn': 'Book Demo',
+                'cta-contact-btn': 'Get in Touch',
+                
+                // Footer
+                'footer-company': 'delta3 GmbH',
+                'footer-copyright': 'Copyright © delta3 GmbH 2025'
             }
         };
         
@@ -673,6 +857,309 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // Search Dialog Functionality
+    const initSearchDialog = () => {
+        const searchBtn = document.querySelector('.nav-search');
+        
+        searchBtn.addEventListener('click', () => {
+            showSearchDialog();
+        });
+        
+        function showSearchDialog() {
+            let modal = document.getElementById('search-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'search-modal';
+                modal.innerHTML = `
+                    <div class="modal-overlay">
+                        <div class="search-modal-content">
+                            <div class="search-header">
+                                <h2>Suchen</h2>
+                                <button class="modal-close"><span class="material-icons">close</span></button>
+                            </div>
+                            <div class="search-form">
+                                <div class="search-input-group">
+                                    <span class="material-icons search-icon">search</span>
+                                    <input type="text" id="search-input" placeholder="Wonach suchen Sie?" autocomplete="off">
+                                </div>
+                                <div class="search-suggestions">
+                                    <div class="suggestion-category">
+                                        <h3>Beliebte Suchbegriffe</h3>
+                                        <div class="suggestion-tags">
+                                            <button class="suggestion-tag">D3 Editor</button>
+                                            <button class="suggestion-tag">Inklusion</button>
+                                            <button class="suggestion-tag">Barrierefreiheit</button>
+                                            <button class="suggestion-tag">Demo</button>
+                                            <button class="suggestion-tag">Tutorials</button>
+                                        </div>
+                                    </div>
+                                    <div class="suggestion-category">
+                                        <h3>Schnellzugriff</h3>
+                                        <div class="quick-links">
+                                            <a href="#d3-editor" class="quick-link">
+                                                <span class="material-icons">edit_note</span>
+                                                <span>D3 Editor</span>
+                                            </a>
+                                            <a href="#support" class="quick-link">
+                                                <span class="material-icons">help</span>
+                                                <span>Support</span>
+                                            </a>
+                                            <a href="#demo" class="quick-link">
+                                                <span class="material-icons">play_circle</span>
+                                                <span>Demo anfordern</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add search modal styles
+                const searchStyles = document.createElement('style');
+                searchStyles.textContent = `
+                    #search-modal {
+                        position: fixed !important;
+                        top: 0 !important;
+                        left: 0 !important;
+                        width: 100vw !important;
+                        height: 100vh !important;
+                        z-index: 10000 !important;
+                        pointer-events: none;
+                    }
+                    
+                    #search-modal .modal-overlay {
+                        position: fixed !important;
+                        top: 0 !important;
+                        left: 0 !important;
+                        width: 100vw !important;
+                        height: 100vh !important;
+                        background: rgba(0, 0, 0, 0.5) !important;
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                        z-index: 10001 !important;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        pointer-events: all;
+                    }
+                    
+                    #search-modal .modal-overlay.active {
+                        opacity: 1;
+                    }
+                    
+                    .search-modal-content {
+                        background: white;
+                        border-radius: 15px;
+                        width: 90%;
+                        max-width: 600px;
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        position: relative;
+                        transform: translateY(-50px);
+                        transition: transform 0.3s ease;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    }
+                    
+                    .modal-overlay.active .search-modal-content {
+                        transform: translateY(0);
+                    }
+                    
+                    .search-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 1.5rem 2rem;
+                        border-bottom: 1px solid #e9ecef;
+                    }
+                    
+                    .search-header h2 {
+                        color: #0c2340;
+                        margin: 0;
+                    }
+                    
+                    .search-form {
+                        padding: 2rem;
+                    }
+                    
+                    .search-input-group {
+                        position: relative;
+                        margin-bottom: 2rem;
+                    }
+                    
+                    .search-icon {
+                        position: absolute;
+                        left: 1rem;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: #666;
+                        font-size: 1.2rem;
+                    }
+                    
+                    #search-input {
+                        width: 100%;
+                        padding: 1rem 1rem 1rem 3rem;
+                        border: 2px solid #e9ecef;
+                        border-radius: 10px;
+                        font-size: 1.1rem;
+                        font-family: 'Roboto', sans-serif;
+                        transition: border-color 0.3s ease;
+                    }
+                    
+                    #search-input:focus {
+                        outline: none;
+                        border-color: #418FDE;
+                    }
+                    
+                    .suggestion-category {
+                        margin-bottom: 2rem;
+                    }
+                    
+                    .suggestion-category h3 {
+                        color: #0c2340;
+                        margin-bottom: 1rem;
+                        font-size: 1rem;
+                    }
+                    
+                    .suggestion-tags {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 0.5rem;
+                    }
+                    
+                    .suggestion-tag {
+                        background: #f8f9fa;
+                        border: 1px solid #e9ecef;
+                        border-radius: 20px;
+                        padding: 0.5rem 1rem;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        font-size: 0.9rem;
+                        color: #333;
+                    }
+                    
+                    .suggestion-tag:hover {
+                        background: #418FDE;
+                        color: white;
+                        border-color: #418FDE;
+                    }
+                    
+                    .quick-links {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+                    
+                    .quick-link {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        padding: 0.75rem 1rem;
+                        border-radius: 8px;
+                        text-decoration: none;
+                        color: #333;
+                        transition: background-color 0.3s ease;
+                    }
+                    
+                    .quick-link:hover {
+                        background-color: #f8f9fa;
+                        color: #418FDE;
+                    }
+                    
+                    .quick-link .material-icons {
+                        color: #418FDE;
+                        font-size: 1.2rem;
+                    }
+                `;
+                document.head.appendChild(searchStyles);
+                document.body.appendChild(modal);
+                
+                // Add event listeners
+                const overlay = modal.querySelector('.modal-overlay');
+                const closeBtn = modal.querySelector('.modal-close');
+                const searchInput = modal.querySelector('#search-input');
+                
+                closeBtn.addEventListener('click', hideModal);
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) hideModal();
+                });
+                
+                // Focus search input when modal opens
+                setTimeout(() => {
+                    searchInput.focus();
+                }, 300);
+                
+                // Handle search input
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        const query = searchInput.value.trim();
+                        if (query) {
+                            // Simulate search - in real app, this would trigger actual search
+                            alert(`Suche nach: "${query}"`);
+                            hideModal();
+                        }
+                    } else if (e.key === 'Escape') {
+                        hideModal();
+                    }
+                });
+                
+                function hideModal() {
+                    overlay.classList.remove('active');
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 300);
+                }
+            }
+            
+            // Show modal
+            modal.style.display = 'block';
+            setTimeout(() => {
+                modal.querySelector('.modal-overlay').classList.add('active');
+            }, 10);
+        }
+    };
+
+    // Reviews Carousel Functionality
+    const initReviewsCarousel = () => {
+        const slides = document.querySelectorAll('.review-slide');
+        const navBtns = document.querySelectorAll('.review-nav-btn');
+        
+        if (slides.length === 0 || navBtns.length === 0) return;
+        
+        let currentSlide = 0;
+        
+        const showSlide = (index) => {
+            // Remove active class from all slides and nav buttons
+            slides.forEach(slide => slide.classList.remove('active'));
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to current slide and nav button
+            slides[index].classList.add('active');
+            navBtns[index].classList.add('active');
+        };
+        
+        // Add click event listeners to navigation buttons
+        navBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+        
+        // Auto-advance slides (optional)
+        const autoAdvance = () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        };
+        
+        // Auto-advance every 6 seconds
+        setInterval(autoAdvance, 6000);
+        
+        // Initialize first slide
+        showSlide(0);
+    };
+
     // Initialize all functionality
     initCarousel();
     createMobileNav();
@@ -682,6 +1169,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderScroll();
     initAccessibilityFeatures();
     initLanguageSwitcher();
+    initSearchDialog();
+    initReviewsCarousel();
     
     // Console message for developers
     console.log('%cDelta3 Website', 'color: #418FDE; font-size: 20px; font-weight: bold;');
