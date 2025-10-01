@@ -1,4 +1,4 @@
-// Delta3 Website JavaScript - German Version with Carousel
+// delta3 Website JavaScript - German Version with Carousel
 document.addEventListener('DOMContentLoaded', function() {
     
     // Hero Carousel Functionality
@@ -495,59 +495,131 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10);
     };
     
-    // Animate on Scroll
+    // Enhanced Animate on Scroll with Staggered Animations
     const initAnimateOnScroll = () => {
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    const element = entry.target;
+                    const delay = element.dataset.delay || 0;
+
+                    setTimeout(() => {
+                        element.classList.add('animated');
+                    }, delay);
+
+                    observer.unobserve(element);
                 }
             });
         }, observerOptions);
-        
-        // Add animation styles
-        const animationStyles = document.createElement('style');
-        animationStyles.textContent = `
-            .animate-on-scroll {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.8s ease, transform 0.8s ease;
-            }
-        `;
-        document.head.appendChild(animationStyles);
-        
-        // Observe elements
-        const elementsToAnimate = document.querySelectorAll(
-            '.product-card, .why-card, .assistenz-content, .partners-content'
-        );
-        elementsToAnimate.forEach(el => {
-            el.classList.add('animate-on-scroll');
-            observer.observe(el);
+
+        // Observe different types of elements with appropriate animations
+        const elementsToAnimate = [
+            { selector: '.product-card', animation: 'fade-in-up', stagger: 100 },
+            { selector: '.why-card', animation: 'fade-in-up', stagger: 150 },
+            { selector: '.action-card', animation: 'scale-in', stagger: 100 },
+            { selector: '.review-card', animation: 'fade-in-up', stagger: 200 },
+            { selector: '.section-title', animation: 'fade-in-up', stagger: 0 },
+            { selector: '.section-subtitle', animation: 'fade-in-up', stagger: 100 },
+            { selector: '.partners-content', animation: 'fade-in', stagger: 0 },
+            { selector: '.assistenz-content', animation: 'fade-in-right', stagger: 0 }
+        ];
+
+        elementsToAnimate.forEach(({ selector, animation, stagger }) => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+                el.dataset.delay = index * stagger;
+                observer.observe(el);
+            });
+        });
+    };
+
+    // Enhanced Product Interactions with More Animations
+    const initEnhancedProductInteractions = () => {
+        const productCards = document.querySelectorAll('.product-card');
+        const actionCards = document.querySelectorAll('.action-card');
+        const allCards = [...productCards, ...actionCards];
+
+        allCards.forEach(card => {
+            // Enhanced hover animations
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+
+                // Animate card content
+                const content = this.querySelector('.card-content') || this;
+                if (content !== this) {
+                    content.style.transform = 'translateY(-5px)';
+                }
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '';
+
+                const content = this.querySelector('.card-content') || this;
+                if (content !== this) {
+                    content.style.transform = 'translateY(0)';
+                }
+            });
+
+            // Click animation
+            card.addEventListener('mousedown', function() {
+                this.style.transform = 'translateY(-8px) scale(0.98)';
+            });
+
+            card.addEventListener('mouseup', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+        });
+    };
+
+    // Add Page Load Animations
+    const initPageLoadAnimations = () => {
+        // Animate header on load
+        const header = document.querySelector('.header');
+        if (header) {
+            header.style.transform = 'translateY(-100%)';
+            header.style.transition = 'transform 0.6s ease';
+
+            setTimeout(() => {
+                header.style.transform = 'translateY(0)';
+            }, 100);
+        }
+
+        // Animate hero content
+        const heroContent = document.querySelector('.carousel-slide.active');
+        if (heroContent) {
+            const title = heroContent.querySelector('.slide-title');
+            const subtitle = heroContent.querySelector('.slide-subtitle');
+            const button = heroContent.querySelector('.cta-button');
+
+            [title, subtitle, button].forEach((el, index) => {
+                if (el) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'all 0.6s ease';
+
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 300 + (index * 150));
+                }
+            });
+        }
+
+        // Add floating animation to certain elements
+        const floatingElements = document.querySelectorAll('.product-icon, .why-icon');
+        floatingElements.forEach(el => {
+            el.classList.add('float-animation');
         });
     };
     
-    // Product Card Interactions
-    const initProductInteractions = () => {
-        const productCards = document.querySelectorAll('.product-card');
-        
-        productCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-                this.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.15)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = '';
-            });
-        });
-    };
     
     // Header Background on Scroll
     const initHeaderScroll = () => {
@@ -564,298 +636,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     
-    // Language and Accessibility Features
-    const initAccessibilityFeatures = () => {
-        // High contrast mode toggle
-        const addHighContrastToggle = () => {
-            const toggle = document.createElement('button');
-            toggle.innerHTML = '<span class="material-icons">contrast</span>';
-            toggle.className = 'accessibility-toggle';
-            toggle.title = 'Hohen Kontrast umschalten';
-            toggle.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background: #418FDE;
-                color: white;
-                border: none;
-                cursor: pointer;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                z-index: 1000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.3s ease;
-            `;
-            
-            toggle.addEventListener('click', () => {
-                document.body.classList.toggle('high-contrast');
-                toggle.style.background = document.body.classList.contains('high-contrast') 
-                    ? '#000' : '#418FDE';
-            });
-            
-            document.body.appendChild(toggle);
-        };
-        
-        // Add high contrast styles
-        const contrastStyles = document.createElement('style');
-        contrastStyles.textContent = `
-            .high-contrast {
-                filter: contrast(150%) brightness(110%);
-            }
-            
-            .high-contrast .cta-button.primary {
-                background: #000 !important;
-                color: #fff !important;
-            }
-            
-            .high-contrast .cta-button.secondary {
-                background: #fff !important;
-                color: #000 !important;
-                border-color: #000 !important;
-            }
-        `;
-        document.head.appendChild(contrastStyles);
-        
-        addHighContrastToggle();
-    };
     
-    // Language Switcher Functionality
-    const initLanguageSwitcher = () => {
-        const currentLangDisplay = document.querySelector('.current-lang');
-        const langDropdown = document.querySelector('.lang-dropdown');
-        const currentLang = localStorage.getItem('language') || 'de';
-        
-        // Translation dictionary
-        const translations = {
-            de: {
-                // Navigation
-                'nav-produkte': 'Produkte',
-                'nav-wissen': 'Wissen',
-                'nav-branchen': 'Branchen',
-                'nav-service': 'Service & Support',
-                'nav-kontakt': 'Kontakt',
-                'nav-demo': 'Demo vereinbaren',
-                'nav-leichte-sprache': 'Leichte Sprache',
-                
-                // Hero Section
-                'hero-title-1': 'ASSISTENZ-SOFTWARE, DIE JEDER VERSTEHT',
-                'hero-subtitle-1': 'Einfach erklärt. Einfach genutzt.',
-                'hero-title-2': 'ASSISTENZ-SOFTWARE FÜR JEDE ANWENDUNG',
-                'hero-subtitle-2': 'Für Bildung, Inklusion & Industrie.',
-                'hero-title-3': 'ASSISTENZ-SOFTWARE, DIE IN 3 SCHRITTEN EINSETZBAR IST',
-                'hero-subtitle-3': 'Digital. Flexibel. Verständlich.',
-                'cta-learn': 'Mehr erfahren',
-                
-                // About Section
-                'about-title': 'ORIENTIERUNG GEBEN. SELBSTSTÄNDIGKEIT FÖRDERN. PROZESSE ERLEICHTERN.',
-                'about-text': 'Damit Arbeit gelingt: Unsere Lösungen stellen Wissen im Arbeitsfluss bereit, erklären Aufgaben Schritt für Schritt und ermöglichen Selbstständigkeit – im Bereich Bildung, Inklusion & Industrie.',
-                
-                // Action Cards
-                'card1-title': 'Produkte Entdecken',
-                'card1-desc': 'Unsere modularen Lösungen machen Arbeit verständlich, sicher und dokumentierbar – für Bildung, Inklusion & Industrie.',
-                'card1-link': 'Zu Den Produkten',
-                'card2-title': 'WISSEN VERTIEFEN',
-                'card2-desc': 'Ob Assistenz, Lean oder Gamification – unsere Schulungen geben Impulse, wie Arbeit einfacher, inklusiver und nachhaltiger gelingt.',
-                'card2-link': 'Zu Den Schulungen',
-                'card3-title': 'PERSPEKTIVEN ERWEITERN',
-                'card3-desc': 'Im Blog berichten wir über Ideen, Geschichten und Praxisbeispiele, die zeigen, wie Assistenz Menschen in Arbeit und Lernen stärkt.',
-                'card3-link': 'Zum Blog',
-                'card4-title': 'UNTERSTÜTZUNG ERHALTEN',
-                'card4-desc': 'Ob Fragen, technische Unterstützung oder individuelle Beratung: Wir sind für Sie da, wenn Sie Hilfe brauchen.',
-                'card4-link': 'Zum Support',
-                
-                // Partners Section
-                'partners-title': 'AUSWAHL UNSERER PARTNER',
-                'partners-desc': 'Wir arbeiten mit führenden Organisationen aus Bildung, Forschung, Inklusion und Industrie zusammen, um innovative Assistenz-Lösungen zu entwickeln und zu implementieren.',
-                
-                // Why Delta3 Section
-                'why-title': 'Why Delta3?',
-                'why1-title': 'EINFACHE ASSISTENZ',
-                'why1-item1': 'Keine Vorkenntnisse nötig – sofort verständlich',
-                'why1-item2': 'Inhalte in Text, Bild oder Video – angepasst an die Zielgruppe',
-                'why1-item3': '„Aufklappen und loslegen" statt lange Einrichtungszeiten',
-                'why2-title': 'FLEXIBEL EINSETZBAR',
-                'why2-item1': 'Ein System für unterschiedliche Arbeitsplätze und Aufgaben',
-                'why2-item2': 'Portabel – einfach mitnehmen, wo es gebraucht wird oder Stationär installiert',
-                'why2-item3': 'Leicht an neue Prozesse oder Aufträge anpassbar',
-                'why3-title': 'FÜR ALLE ZIELGRUPPEN',
-                'why3-item1': 'Entwickelt für Werkstätten, Bildungseinrichtungen & Industrie',
-                'why3-item2': 'Fördert Teilhabe, Effizienz und Zusammenarbeit',
-                'why3-item3': 'Einfach zugänglich – unabhängig von Vorkenntnissen',
-                
-                // Reviews Section
-                'reviews-title': 'STIMMEN UNSERER KUNDEN',
-                'reviews-subtitle': 'Echte Geschichten, echte Wirkung: Unsere Kund*innen teilen, wie einfache Assistenz-Software Barrieren abbaut und Zusammenarbeit stärkt.',
-                
-                // Contact CTA
-                'cta-final-title': 'Bereit für einfache Assistenz?',
-                'cta-final-text': 'Entdecken Sie, wie Delta3 Ihre Arbeitsprozesse vereinfachen und Barrieren abbauen kann.',
-                'cta-demo-btn': 'Demo vereinbaren',
-                'cta-contact-btn': 'Kontakt aufnehmen',
-                
-                // Footer
-                'footer-company': 'delta3 GmbH',
-                'footer-copyright': 'Copyright © delta3 GmbH 2025'
-            },
-            en: {
-                // Navigation
-                'nav-produkte': 'Products',
-                'nav-wissen': 'Knowledge',
-                'nav-branchen': 'Industries',
-                'nav-service': 'Service & Support',
-                'nav-kontakt': 'Contact',
-                'nav-demo': 'Book Demo',
-                'nav-leichte-sprache': 'Easy Language',
-                
-                // Hero Section
-                'hero-title-1': 'ASSISTIVE SOFTWARE EVERYONE UNDERSTANDS',
-                'hero-subtitle-1': 'Simply explained. Simply used.',
-                'hero-title-2': 'ASSISTIVE SOFTWARE FOR EVERY APPLICATION',
-                'hero-subtitle-2': 'For Education, Inclusion & Industry.',
-                'hero-title-3': 'ASSISTIVE SOFTWARE DEPLOYABLE IN 3 STEPS',
-                'hero-subtitle-3': 'Digital. Flexible. Understandable.',
-                'cta-learn': 'Learn More',
-                
-                // About Section
-                'about-title': 'PROVIDE GUIDANCE. PROMOTE INDEPENDENCE. FACILITATE PROCESSES.',
-                'about-text': 'Making work successful: Our solutions provide knowledge in the workflow, explain tasks step by step and enable independence – in education, inclusion & industry.',
-                
-                // Action Cards
-                'card1-title': 'Discover Products',
-                'card1-desc': 'Our modular solutions make work understandable, safe and documentable – for education, inclusion & industry.',
-                'card1-link': 'To Products',
-                'card2-title': 'DEEPEN KNOWLEDGE',
-                'card2-desc': 'Whether assistance, lean or gamification – our training provides impulses on how work becomes simpler, more inclusive and sustainable.',
-                'card2-link': 'To Training',
-                'card3-title': 'EXPAND PERSPECTIVES',
-                'card3-desc': 'In our blog we report on ideas, stories and practical examples that show how assistance strengthens people in work and learning.',
-                'card3-link': 'To Blog',
-                'card4-title': 'GET SUPPORT',
-                'card4-desc': 'Whether questions, technical support or individual consulting: We are here for you when you need help.',
-                'card4-link': 'To Support',
-                
-                // Partners Section
-                'partners-title': 'SELECTION OF OUR PARTNERS',
-                'partners-desc': 'We work together with leading organizations from education, research, inclusion and industry to develop and implement innovative assistance solutions.',
-                
-                // Why Delta3 Section
-                'why-title': 'Why Delta3?',
-                'why1-title': 'SIMPLE ASSISTANCE',
-                'why1-item1': 'No prior knowledge required – immediately understandable',
-                'why1-item2': 'Content in text, image or video – adapted to the target group',
-                'why1-item3': '"Unfold and get started" instead of long setup times',
-                'why2-title': 'FLEXIBLY DEPLOYABLE',
-                'why2-item1': 'One system for different workplaces and tasks',
-                'why2-item2': 'Portable – easy to take where needed or stationary installation',
-                'why2-item3': 'Easy to adapt to new processes or orders',
-                'why3-title': 'FOR ALL TARGET GROUPS',
-                'why3-item1': 'Developed for workshops, educational institutions & industry',
-                'why3-item2': 'Promotes participation, efficiency and cooperation',
-                'why3-item3': 'Easily accessible – regardless of prior knowledge',
-                
-                // Reviews Section
-                'reviews-title': 'VOICES OF OUR CUSTOMERS',
-                'reviews-subtitle': 'Real stories, real impact: Our customers share how simple assistance software breaks down barriers and strengthens collaboration.',
-                
-                // Contact CTA
-                'cta-final-title': 'Ready for Simple Assistance?',
-                'cta-final-text': 'Discover how Delta3 can simplify your workflows and break down barriers.',
-                'cta-demo-btn': 'Book Demo',
-                'cta-contact-btn': 'Get in Touch',
-                
-                // Footer
-                'footer-company': 'delta3 GmbH',
-                'footer-copyright': 'Copyright © delta3 GmbH 2025'
-            }
-        };
-        
-        // Language options
-        const langOptions = {
-            de: { flag: '🇩🇪', name: 'DE' },
-            en: { flag: '🇬🇧', name: 'EN' }
-        };
-        
-        // Set initial language
-        setLanguage(currentLang);
-        
-        // Add event listener for dropdown options
-        langDropdown.addEventListener('click', (e) => {
-            if (e.target.classList.contains('lang-option')) {
-                const lang = e.target.dataset.lang;
-                setLanguage(lang);
-                localStorage.setItem('language', lang);
-            }
-        });
-        
-        function setLanguage(lang) {
-            // Update current language display
-            const current = langOptions[lang];
-            currentLangDisplay.textContent = `${current.flag} ${current.name}`;
-            
-            // Update dropdown to show the other language
-            const otherLang = lang === 'de' ? 'en' : 'de';
-            const other = langOptions[otherLang];
-            langDropdown.innerHTML = `<button class="lang-option" data-lang="${otherLang}">${other.flag} ${other.name}</button>`;
-            
-            // Update page language
-            document.documentElement.lang = lang;
-            
-            // Translate elements
-            const elementsToTranslate = document.querySelectorAll('[data-translate]');
-            elementsToTranslate.forEach(element => {
-                const key = element.dataset.translate;
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            
-            // Update navigation links
-            const navLinks = {
-                'Lösungen': lang === 'de' ? 'Lösungen' : 'Solutions',
-                'Anwendungen': lang === 'de' ? 'Anwendungen' : 'Applications',
-                'Über uns': lang === 'de' ? 'Über uns' : 'About',
-                'Kontakt': lang === 'de' ? 'Kontakt' : 'Contact'
-            };
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                const currentText = link.textContent.trim();
-                for (const [de, translation] of Object.entries(navLinks)) {
-                    if ((lang === 'de' && currentText === translation) || 
-                        (lang === 'en' && currentText === de)) {
-                        link.textContent = lang === 'de' ? de : translation;
-                        break;
-                    }
-                }
-            });
-            
-            // Update carousel slides
-            updateCarouselLanguage(lang);
-        }
-        
-        function updateCarouselLanguage(lang) {
-            const slides = document.querySelectorAll('.carousel-slide');
-            slides.forEach((slide, index) => {
-                const title = slide.querySelector('.slide-title');
-                const subtitle = slide.querySelector('.slide-subtitle');
-                
-                if (title && subtitle) {
-                    const titleKey = `hero-title-${index + 1}`;
-                    const subtitleKey = `hero-subtitle-${index + 1}`;
-                    
-                    if (translations[lang][titleKey]) {
-                        title.textContent = translations[lang][titleKey];
-                    }
-                    if (translations[lang][subtitleKey]) {
-                        subtitle.textContent = translations[lang][subtitleKey];
-                    }
-                }
-            });
-        }
-    };
 
     // Search Dialog Functionality
     const initSearchDialog = () => {
@@ -1120,44 +901,114 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Reviews Carousel Functionality
+    // Reviews Carousel - Simple static version
     const initReviewsCarousel = () => {
-        const slides = document.querySelectorAll('.review-slide');
+        const slideGroups = document.querySelectorAll('.review-slide-group');
         const navBtns = document.querySelectorAll('.review-nav-btn');
-        
-        if (slides.length === 0 || navBtns.length === 0) return;
-        
+
+        if (slideGroups.length === 0 || navBtns.length === 0) return;
+
         let currentSlide = 0;
-        
+        let autoPlayInterval;
+
         const showSlide = (index) => {
-            // Remove active class from all slides and nav buttons
-            slides.forEach(slide => slide.classList.remove('active'));
-            navBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to current slide and nav button
-            slides[index].classList.add('active');
-            navBtns[index].classList.add('active');
+            slideGroups.forEach((group, i) => {
+                group.classList.toggle('active', i === index);
+            });
+            navBtns.forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
         };
-        
-        // Add click event listeners to navigation buttons
+
+        const nextSlide = () => {
+            currentSlide = (currentSlide + 1) % slideGroups.length;
+            showSlide(currentSlide);
+        };
+
+        const startAutoPlay = () => {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(nextSlide, 4000);
+        };
+
+        const stopAutoPlay = () => {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+        };
+
+        // Navigation event listeners
         navBtns.forEach((btn, index) => {
             btn.addEventListener('click', () => {
                 currentSlide = index;
                 showSlide(currentSlide);
+                stopAutoPlay();
+                setTimeout(startAutoPlay, 3000);
             });
         });
-        
-        // Auto-advance slides (optional)
-        const autoAdvance = () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        };
-        
-        // Auto-advance every 6 seconds
-        setInterval(autoAdvance, 6000);
-        
-        // Initialize first slide
+
+        // Hover pause
+        const carousel = document.querySelector('.reviews-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+        }
+
+        // Initialize
         showSlide(0);
+        startAutoPlay();
+    };
+
+    // Build dynamic content if needed
+    const buildDynamicContent = (reviewItems, slidesContainer, navContainer) => {
+        console.log('🔧 Building dynamic content...');
+        console.log('Items to process:', reviewItems.length);
+
+        const itemsPerSlide = 2;
+        const totalSlides = Math.ceil(reviewItems.length / itemsPerSlide);
+        console.log('Total slides to create:', totalSlides);
+
+        // Build slides
+        slidesContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            console.log(`Creating slide ${i + 1}`);
+            const slideGroup = document.createElement('div');
+            slideGroup.className = 'review-slide-group';
+            if (i === 0) slideGroup.classList.add('active');
+
+            let cardsInThisSlide = 0;
+            for (let j = 0; j < itemsPerSlide; j++) {
+                const itemIndex = i * itemsPerSlide + j;
+                if (itemIndex < reviewItems.length) {
+                    console.log(`Processing item ${itemIndex}`);
+                    const clonedItem = reviewItems[itemIndex].cloneNode(true);
+                    const reviewCard = clonedItem.querySelector('.review-card');
+                    if (reviewCard) {
+                        slideGroup.appendChild(reviewCard);
+                        cardsInThisSlide++;
+                        console.log(`Added card ${cardsInThisSlide} to slide ${i + 1}`);
+                    } else {
+                        console.warn(`No review-card found in item ${itemIndex}`);
+                    }
+                } else {
+                    console.log(`Item ${itemIndex} is beyond available items`);
+                }
+            }
+            console.log(`Slide ${i + 1} has ${cardsInThisSlide} cards`);
+            slidesContainer.appendChild(slideGroup);
+        }
+
+        // Build navigation
+        navContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const navBtn = document.createElement('button');
+            navBtn.className = 'review-nav-btn';
+            navBtn.setAttribute('data-slide', i);
+            navBtn.setAttribute('aria-label', `Bewertungen ${i * itemsPerSlide + 1}-${Math.min((i + 1) * itemsPerSlide, reviewItems.length)}`);
+            if (i === 0) navBtn.classList.add('active');
+            navContainer.appendChild(navBtn);
+        }
+
+        console.log(`✅ Dynamic content built: ${totalSlides} slides from ${reviewItems.length} items`);
+        console.log('Slides container HTML length:', slidesContainer.innerHTML.length);
+        console.log('Nav container HTML length:', navContainer.innerHTML.length);
     };
 
     // Initialize all functionality
@@ -1165,14 +1016,13 @@ document.addEventListener('DOMContentLoaded', function() {
     createMobileNav();
     initSmoothScroll();
     initAnimateOnScroll();
-    initProductInteractions();
+    initEnhancedProductInteractions();
+    initPageLoadAnimations();
     initHeaderScroll();
-    initAccessibilityFeatures();
-    initLanguageSwitcher();
     initSearchDialog();
     initReviewsCarousel();
     
     // Console message for developers
-    console.log('%cDelta3 Website', 'color: #418FDE; font-size: 20px; font-weight: bold;');
+    console.log('%cdelta3 Website', 'color: #418FDE; font-size: 20px; font-weight: bold;');
     console.log('%cEinfache Assistenz für alle', 'color: #0c2340; font-size: 14px;');
 });
