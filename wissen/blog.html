@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - delta3 Assistenz-Software</title>
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand" onclick="window.location.href='../index.html'">
+                <img src="https://delta3.io/wp-content/uploads/2023/05/cropped-cropped-logo-transparent_LONG_22_05_600dpi-2.png" alt="delta3" class="logo">
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Produkte <span class="material-icons dropdown-arrow">expand_more</span></a>
+                    <div class="dropdown-content mega-menu three-column">
+                        <div class="dropdown-column">
+                            <a href="../produkte/alino.html" class="dropdown-item-main">
+                                <h4>Alino</h4>
+                                <p>Unsere einfache ALL-IN-ONE Assistenz Lösung</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="../produkte/alinoplanner.html" class="dropdown-item-main">
+                                <h4>AlinoPlanner</h4>
+                                <p>Speziell für strukturierte Tagespläne entwickelt</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="../produkte/xtendplatform.html" class="dropdown-item-main">
+                                <h4>Xtend Platform</h4>
+                                <p>Unsere Modulare Lösung für komplexe Anwendungsfälle</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="../produkte/individuellesoftware.html" class="dropdown-item-main">
+                                <h4>Individuelle Software</h4>
+                                <p>Wir unterstützen Sie mit individuellen Assistenz-Lösungen</p>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Wissen <span class="material-icons dropdown-arrow">expand_more</span></a>
+                    <div class="dropdown-content mega-menu three-column">
+                        <div class="dropdown-column">
+                            <a href="../service-support/produkt-schulungen.html" class="dropdown-item-main">
+                                <h4>Schulungen & Beratung</h4>
+                                <p>Lernen Sie Arbeit einfacher, inklusiver und nachhaltiger zu gestalten</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="blog-post-1.html" class="dropdown-item-main">
+                                <h4>Fallbeispiele</h4>
+                                <p>So nutzen Werkstätten und Unternehmen unsere Lösungen</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="../wissen/blog.html" class="dropdown-item-main">
+                                <h4>Blog</h4>
+                                <p>Lassen Sie sich von unseren Ideen und Beispielen inspirieren</p>
+                            </a>
+                            <a href="../wissen/forschung.html" class="dropdown-item-main">
+                                <h4>Forschung</h4>
+                                <p>Wir forschen aktiv an neuen Lösungen für Assistenz</p>
+                            </a>
+                            <a href="../wissen/whitepaper.html" class="dropdown-item-main">
+                                <h4>Whitepaper</h4>
+                                <p>Wir denken Forschung praxisnah, damit aus Erkenntnissen Assistenz wird</p>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Branchen <span class="material-icons dropdown-arrow">expand_more</span></a>
+                    <div class="dropdown-content mega-menu three-column branchen-menu">
+                        <div class="dropdown-column intro-column">
+                            <div class="dropdown-intro">
+                                <h4>Beispiele der vielfältigen Branchen, in denen wir unsere Software-Lösungen anbieten</h4>
+                            </div>
+                        </div>
+                        <div class="dropdown-column branchen-grid">
+                            <a href="#industrielle-produktion" class="dropdown-item">Industrielle Produktion</a>
+                            <a href="#technischer-service" class="dropdown-item">Technischer Service</a>
+                            <a href="#aus-weiterbildung" class="dropdown-item">Aus- und Weiterbildung</a>
+                            <a href="#pflegeeinrichtungen" class="dropdown-item">Pflegeeinrichtungen</a>
+                            <a href="#garten-landschaftsbau" class="dropdown-item">Garten und Landschaftsbau</a>
+                        </div>
+                        <div class="dropdown-column branchen-grid">
+                            <a href="#therapieeinrichtungen" class="dropdown-item">Therapieeinrichtungen</a>
+                            <a href="#hotel-gastronomie" class="dropdown-item">Hotel und Gastronomie</a>
+                            <a href="#facility-management" class="dropdown-item">Facility Management</a>
+                            <a href="#kommunale-einrichtungen" class="dropdown-item">Kommunale Einrichtungen</a>
+                            <a href="#gebaeudedienstleistungen" class="dropdown-item">Gebäudedienstleistungen</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Service & Support <span class="material-icons dropdown-arrow">expand_more</span></a>
+                    <div class="dropdown-content mega-menu three-column service-menu">
+                        <div class="dropdown-column">
+                            <a href="#technischer-support" class="dropdown-item-main">
+                                <h4>Technischer Support</h4>
+                                <p>Wir helfen Ihnen schnell, wenn es darauf ankommt</p>
+                            </a>
+                            <a href="#produkt-schulungen" class="dropdown-item-main">
+                                <h4>Produkt-Schulungen</h4>
+                                <p>Wir vermitteln Ihnen das nötige Know-How schnell & kompakt</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="#anwendungsbeitrag" class="dropdown-item-main">
+                                <h4>Anwendungsbeitrag</h4>
+                                <p>Wir finden Lösungen, die zu Ihnen passen</p>
+                            </a>
+                            <a href="#video-tutorials" class="dropdown-item-main">
+                                <h4>Video Tutorials</h4>
+                                <p>Einfache Schritt-für-Schritt Anleitungen</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="#processberatung" class="dropdown-item-main">
+                                <h4>Processberatung</h4>
+                                <p>Wir helfen Ihnen ihre Abläufe zu optimieren</p>
+                            </a>
+                            <a href="#integrationberatung" class="dropdown-item-main">
+                                <h4>Integrationberatung</h4>
+                                <p>Wir unterstützen Sie bei einer nahtlosen Integration in bestehende Strukturen</p>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Kontakt <span class="material-icons dropdown-arrow">expand_more</span></a>
+                    <div class="dropdown-content mega-menu three-column kontakt-menu">
+                        <div class="dropdown-column">
+                            <a href="#kontakt-anfragen" class="dropdown-item-main">
+                                <h4>Kontakt</h4>
+                                <p>Wir unterstützen Sie gerne. Nehmen Sie Kontakt auf.</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="../kontakt/ueber-uns.html#offene-stellen" class="dropdown-item-main">
+                                <h4>Karriere</h4>
+                                <p>Sie möchten Teil des Teams werden?</p>
+                            </a>
+                        </div>
+                        <div class="dropdown-column">
+                            <a href="../kontakt/ueber-uns.html" class="dropdown-item-main">
+                                <h4>Über uns</h4>
+                                <p>einfache Assistenz für alle – damit Arbeit verständlicher, flexibler und inklusiver wird.</p>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="nav-cta">
+                <button class="nav-search" aria-label="Search">
+                    <span class="material-icons">search</span>
+                </button>
+                <a href="#demo" class="cta-button primary">Demo vereinbaren</a>
+                <a href="#leichte-sprache" class="nav-accessibility">Leichte Sprache</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Dialog -->
+    <div id="searchDialog" class="search-dialog" style="display: none;">
+        <div class="search-container">
+            <div class="search-header">
+                <h2>Suche</h2>
+                <button id="closeSearch" class="close-btn">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="search-input-container">
+                <input type="text" id="searchInput" placeholder="Nach was suchen Sie?" autofocus>
+                <button class="search-submit">
+                    <span class="material-icons">search</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Blog</h1>
+                <p class="hero-subtitle">Entdecken Sie neue Ideen, Praxisbeispiele und Insights rund um einfache Assistenz-Software</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories Filter -->
+    <section class="blog-filter">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">Alle Beiträge</button>
+                <button class="filter-tab" data-category="forschung">Einblicke in die Forschung</button>
+                <button class="filter-tab" data-category="wissen">Wissen kompakt</button>
+                <button class="filter-tab" data-category="praxis">Aus der Praxis</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts List -->
+    <section class="blog-posts">
+        <div class="container">
+            <div class="posts-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-post-card" data-category="praxis">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digitale Assistenz in der Praxis">
+                        <div class="post-category">Praxis</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">15. Januar 2024</span>
+                            <span class="post-author">Sarah Weber</span>
+                        </div>
+                        <h3 class="post-title">Wie digitale Assistenz-Software Arbeitsabläufe in Werkstätten revolutioniert</h3>
+                        <p class="post-excerpt">Erfahren Sie, wie moderne Assistenz-Software dabei hilft, komplexe Arbeitsschritte zu vereinfachen und allen Mitarbeitern den Zugang zu wichtigen Informationen zu ermöglichen.</p>
+                        <a href="blog-post-1.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post-card" data-category="wissen">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="KI in der Assistenz-Software">
+                        <div class="post-category">Wissen kompakt</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">08. Januar 2024</span>
+                            <span class="post-author">Dr. Michael Schmidt</span>
+                        </div>
+                        <h3 class="post-title">Künstliche Intelligenz meets Barrierefreiheit: Die Zukunft der Assistenz-Software</h3>
+                        <p class="post-excerpt">Wie KI-basierte Lösungen dabei helfen können, Assistenz-Software noch zugänglicher und intuitiver zu gestalten – ein Blick in die Zukunft der inklusiven Technologie.</p>
+                        <a href="blog-post-2.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-post-card" data-category="praxis">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Inklusion am Arbeitsplatz">
+                        <div class="post-category">Aus der Praxis</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">22. Dezember 2023</span>
+                            <span class="post-author">Lisa Müller</span>
+                        </div>
+                        <h3 class="post-title">Inklusion durch Technologie: Erfolgsgeschichten aus deutschen Werkstätten</h3>
+                        <p class="post-excerpt">Drei inspirierende Beispiele zeigen, wie Assistenz-Software Menschen mit Behinderungen zu mehr Selbstständigkeit und Teilhabe am Arbeitsplatz verhilft.</p>
+                        <a href="blog-post-3.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-post-card" data-category="forschung">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Forschung und Entwicklung">
+                        <div class="post-category">Einblicke in die Forschung</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">15. Dezember 2023</span>
+                            <span class="post-author">Prof. Dr. Anna Klein</span>
+                        </div>
+                        <h3 class="post-title">Neue Erkenntnisse aus der Assistenz-Forschung: Was wir von Nutzerstudien lernen</h3>
+                        <p class="post-excerpt">Aktuelle Forschungsergebnisse zeigen, welche Features von Assistenz-Software wirklich einen Unterschied machen und wie Design die Usability beeinflusst.</p>
+                        <a href="blog-post-4.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-post-card" data-category="praxis">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Schulung und Training">
+                        <div class="post-category">Aus der Praxis</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">08. Dezember 2023</span>
+                            <span class="post-author">Thomas Wagner</span>
+                        </div>
+                        <h3 class="post-title">Erfolgreich implementiert: 5 Tipps für die Einführung von Assistenz-Software</h3>
+                        <p class="post-excerpt">Von der Planung bis zum Go-Live: Diese bewährten Strategien helfen Ihnen dabei, Assistenz-Software erfolgreich in Ihrem Unternehmen einzuführen.</p>
+                        <a href="blog-post-5.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-post-card" data-category="wissen">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mobile Lösungen">
+                        <div class="post-category">Wissen kompakt</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">01. Dezember 2023</span>
+                            <span class="post-author">Julia Hoffmann</span>
+                        </div>
+                        <h3 class="post-title">Mobile First: Warum Assistenz-Software auf allen Geräten funktionieren muss</h3>
+                        <p class="post-excerpt">Die Bedeutung von responsivem Design und plattformübergreifender Kompatibilität für moderne Assistenz-Software-Lösungen.</p>
+                        <a href="blog-post-6.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="blog-pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">
+                    <span class="material-icons">chevron_right</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="blog-newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Bleiben Sie auf dem Laufenden</h2>
+                <p>Erhalten Sie die neuesten Artikel und Insights direkt in Ihr Postfach</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+                    <button type="submit" class="cta-button primary">Anmelden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Produkte Section -->
+                <div class="footer-section">
+                    <h3>Produkte</h3>
+                    <ul>
+                        <li><a href="../produkte/alino.html">Alino</a></li>
+                        <li><a href="../produkte/alinoplanner.html">AlinoPlanner</a></li>
+                        <li><a href="../produkte/xtendplatform.html">Xtend Platform</a></li>
+                        <li><a href="../produkte/individuellesoftware.html">Individuelle Software</a></li>
+                    </ul>
+                </div>
+
+                <!-- Service & Support Section -->
+                <div class="footer-section">
+                    <h3>Service & Support</h3>
+                    <ul>
+                        <li><a href="../service-support/technischer-support.html">Technischer Support</a></li>
+                        <li><a href="../service-support/produkt-schulungen.html">Produkt-Schulungen</a></li>
+                        <li><a href="../service-support/anwendungsbeitrag.html">Anwendungsbeitrag</a></li>
+                        <li><a href="../service-support/video-tutorials.html">Video Tutorials</a></li>
+                        <li><a href="../service-support/processberatung.html">Processberatung</a></li>
+                        <li><a href="../service-support/integrationberatung.html">Integrationberatung</a></li>
+                    </ul>
+                </div>
+
+                <!-- Wissen Section -->
+                <div class="footer-section">
+                    <h3>Wissen</h3>
+                    <ul>
+                        <li><a href="../service-support/produkt-schulungen.html">Schulungen & Beratung</a></li>
+                        <li><a href="blog-post-1.html">Fallbeispiele</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="whitepaper.html">Whitepaper</a></li>
+                    </ul>
+                </div>
+
+                <!-- Unternehmen Section -->
+                <div class="footer-section">
+                    <h3>Unternehmen</h3>
+                    <ul>
+                        <li><a href="../kontakt/ueber-uns.html">Über uns</a></li>
+                        <li><a href="blog.html">Neuigkeiten</a></li>
+                        <li><a href="../kontakt/ueber-uns.html#offene-stellen">Karriere</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontakt Section -->
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <ul>
+                        <li><a href="../kontakt/kontakt-anfragen.html">Kontakt</a></li>
+                        <li><a href="../index.html#demo">Demo vereinbaren</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Company Information -->
+            <div class="footer-company">
+                <div class="company-info">
+                    <div class="company-name-email">
+                        <h4>delta3 GmbH</h4>
+                        <p>helloatdelta3.io</p>
+                    </div>
+                    <div class="company-address">
+                        <p>Campusallee 6</p>
+                        <p>32657 Lemgo</p>
+                        <p>Deutschland</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/delta3-io/" aria-label="LinkedIn" class="social-link" target="_blank" rel="noopener">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <img src="../assets/FuE.png" alt="Forschung und Entwicklung" class="fue-logo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <span>Copyright © delta3 GmbH 2025</span>
+                    <a href="../kontakt/datenschutz.html">Datenschutzrichtlinie</a>
+                    <a href="../kontakt/impressum.html">Impressum</a>
+                    <a href="../kontakt/agb.html">AGBs</a>
+                    <a href="../kontakt/cookies.html">Cookie-Richtlinie</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html>
