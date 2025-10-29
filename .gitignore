@@ -1,0 +1,16 @@
+# PDF source files
+FALLBEISPIELE CONTENT/
+
+# Claude Code settings
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
