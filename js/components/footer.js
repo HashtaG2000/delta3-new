@@ -19,7 +19,7 @@ function buildFooterHTML(basePath) {
                     <h3>Wissen</h3>
                     <ul>
                         <li><a href="${basePath}service-support/produkt-schulungen.html">Schulungen & Beratung</a></li>
-                        <li><a href="${basePath}wissen/blog-post-1.html">Fallbeispiele</a></li>
+                        <li><a href="${basePath}wissen/fallbeispiele.html">Fallbeispiele</a></li>
                         <li><a href="${basePath}wissen/blog.html">Blog</a></li>
                         <li><a href="${basePath}wissen/forschung.html">Forschung</a></li>
                         <li><a href="${basePath}wissen/whitepaper.html">Whitepaper</a></li>

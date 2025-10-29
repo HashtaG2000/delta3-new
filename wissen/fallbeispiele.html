@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fallbeispiele - delta3 Assistenz-Software</title>
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation wird dynamisch per JavaScript eingefügt -->
+
+    <!-- Search Dialog -->
+    <div id="searchDialog" class="search-dialog" style="display: none;">
+        <div class="search-container">
+            <div class="search-header">
+                <h2>Suche</h2>
+                <button id="closeSearch" class="close-btn">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="search-input-container">
+                <input type="text" id="searchInput" placeholder="Nach was suchen Sie?" autofocus>
+                <button class="search-submit">
+                    <span class="material-icons">search</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fallbeispiele Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Fallbeispiele</h1>
+                <p class="hero-subtitle">Entdecken Sie, wie Werkstätten und Unternehmen mit delta3 Assistenz-Software echte Ergebnisse erzielen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Filter -->
+    <section class="blog-filter">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">Alle Branchen</button>
+                <button class="filter-tab" data-category="hotel">Hotel & Gastronomie</button>
+                <button class="filter-tab" data-category="werkstatt">Werkstätten</button>
+                <button class="filter-tab" data-category="gartenbau">Garten- & Landschaftsbau</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies List -->
+    <section class="blog-posts">
+        <div class="container">
+            <div class="posts-grid">
+                <!-- Case Study 1: Hotel Marco Polo -->
+                <article class="blog-post-card" data-category="hotel">
+                    <div class="post-image">
+                        <img src="../assets/hotel-marco-polo-hero.jpg" alt="Hotel Marco Polo Münster">
+                        <div class="post-category">Hotel & Gastronomie</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><span class="material-icons" style="font-size: 16px; vertical-align: middle;">location_on</span> Münster</span>
+                            <span class="post-author">Alino</span>
+                        </div>
+                        <h3 class="post-title">Hotel Marco Polo: Digitale Assistenz für die Gebäudereinigung</h3>
+                        <p class="post-excerpt">Das Vielfalt-Hotel in Münster nutzt digitale Checklisten zur Optimierung der Zimmerreinigung und fördert die Selbstständigkeit von Mitarbeitenden mit Behinderung.</p>
+                        <a href="fallbeispiel-hotel-marco-polo.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Case Study 2: Harz-Weser-Werke -->
+                <article class="blog-post-card" data-category="werkstatt">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Harz-Weser-Werke">
+                        <div class="post-category">Werkstätten</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><span class="material-icons" style="font-size: 16px; vertical-align: middle;">location_on</span> Goslar</span>
+                            <span class="post-author">Alino</span>
+                        </div>
+                        <h3 class="post-title">Harz-Weser-Werke: Inklusive Produktionsabläufe</h3>
+                        <p class="post-excerpt">Wie digitale Assistenz-Software Menschen mit Beeinträchtigungen leichter und schneller in Produktionsabläufe einbindet.</p>
+                        <a href="fallbeispiel-harz-weser-werke.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Case Study 3: Wertkreis Gütersloh -->
+                <article class="blog-post-card" data-category="werkstatt">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wertkreis Gütersloh">
+                        <div class="post-category">Werkstätten</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><span class="material-icons" style="font-size: 16px; vertical-align: middle;">location_on</span> Gütersloh</span>
+                            <span class="post-author">Alino</span>
+                        </div>
+                        <h3 class="post-title">Wertkreis Gütersloh: Effiziente Montageunterstützung</h3>
+                        <p class="post-excerpt">Digitale Schritt-für-Schritt-Anleitungen revolutionieren komplexe Montageprozesse in der inklusiven Werkstatt.</p>
+                        <a href="fallbeispiel-wertkreis-gt.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Case Study 4: Bottroper Werkstätten -->
+                <article class="blog-post-card" data-category="werkstatt">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bottroper Werkstätten">
+                        <div class="post-category">Werkstätten</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><span class="material-icons" style="font-size: 16px; vertical-align: middle;">location_on</span> Bottrop</span>
+                            <span class="post-author">Alino</span>
+                        </div>
+                        <h3 class="post-title">Bottroper Werkstätten: Qualitätssicherung durch Assistenz</h3>
+                        <p class="post-excerpt">Wie digitale Assistenz-Systeme die Qualitätssicherung verbessern und gleichzeitig Mitarbeitende fördern.</p>
+                        <a href="fallbeispiel-bottroper-werkstaetten.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Case Study 5: Grünbau -->
+                <article class="blog-post-card" data-category="gartenbau">
+                    <div class="post-image">
+                        <img src="../assets/Grünbau.png" alt="Grünbau">
+                        <div class="post-category">Garten- & Landschaftsbau</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><span class="material-icons" style="font-size: 16px; vertical-align: middle;">location_on</span> Region</span>
+                            <span class="post-author">Alino</span>
+                        </div>
+                        <h3 class="post-title">Grünbau: Mobile Assistenz im Außenbereich</h3>
+                        <p class="post-excerpt">Digitale Arbeitsanleitungen optimieren Arbeitsabläufe im Garten- und Landschaftsbau unter freiem Himmel.</p>
+                        <a href="fallbeispiel-gruenbau.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+
+                <!-- Case Study 6: Kiebitzhof -->
+                <article class="blog-post-card" data-category="gartenbau">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kiebitzhof">
+                        <div class="post-category">Garten- & Landschaftsbau</div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><span class="material-icons" style="font-size: 16px; vertical-align: middle;">location_on</span> Region</span>
+                            <span class="post-author">Alino</span>
+                        </div>
+                        <h3 class="post-title">Kiebitzhof: Sicherheit durch digitale Unterweisungen</h3>
+                        <p class="post-excerpt">Unfallverhütungsvorschriften und Gefahrenunterweisungen jederzeit abrufbar für alle Mitarbeitenden.</p>
+                        <a href="fallbeispiel-kiebitzhof.html" class="read-more-btn">Weiterlesen</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="blog-newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Ihre Erfolgsgeschichte mit delta3</h2>
+                <p>Entdecken Sie, wie Assistenz-Software auch Ihr Unternehmen voranbringen kann</p>
+                <a href="../kontakt/kontakt-anfragen.html?demo=true" class="cta-button primary">Demo vereinbaren</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>

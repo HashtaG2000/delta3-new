@@ -85,7 +85,7 @@ export const searchIndex = [
     {
         title: 'Fallbeispiele',
         description: 'So nutzen Werkstätten und Unternehmen unsere Lösungen',
-        url: 'wissen/blog-post-1.html',
+        url: 'wissen/fallbeispiele.html',
         category: 'Wissen',
         keywords: ['fallbeispiel', 'case study', 'erfolg', 'praxis', 'referenz', 'kunde']
     },

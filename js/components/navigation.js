@@ -54,7 +54,7 @@ function buildNavigationHTML(basePath) {
                                 <h4>Schulungen & Beratung</h4>
                                 <p>Lernen Sie Arbeit einfacher, inklusiver und nachhaltiger zu gestalten</p>
                             </a>
-                            <a href="${basePath}wissen/blog-post-1.html" class="dropdown-item-main">
+                            <a href="${basePath}wissen/fallbeispiele.html" class="dropdown-item-main">
                                 <h4>Fallbeispiele</h4>
                                 <p>So nutzen Werkstätten und Unternehmen unsere Lösungen</p>
                             </a>
