@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns - delta3 Assistenz-Software</title>
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Über uns Page Specific Styles */
+        .ueber-uns-hero {
+            background: #0c2340;
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .ueber-uns-hero .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .ueber-uns-hero .hero-subtitle {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: white;
+            opacity: 1;
+        }
+        
+        .hero-description {
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-description h2 {
+            color: #0c2340;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .hero-description p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .mission-text {
+            color: #418FDE;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .team-section, .values-section, .jobs-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #0c2340;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .section-text {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            padding: 0 20px;
+        }
+        
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-card {
+            width: 250px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-image {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #418FDE, #2c7cc9);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 150%;
+            height: 150%;
+            object-fit: cover;
+            object-position: center 35%;
+            overflow: hidden;
+        }
+        
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0c2340;
+            margin-bottom: 8px;
+        }
+        
+        .team-position {
+            color: #418FDE;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .team-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .value-card {
+            text-align: center;
+        }
+        
+        .value-image {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #418FDE, #2c7cc9);
+            border-radius: 15px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .value-image .material-icons {
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0c2340;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .value-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .jobs-section {
+            background: #f8f9fa;
+        }
+
+        .jobs-categories {
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .job-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: #0c2340;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #418FDE;
+        }
+
+        .jobs-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #418FDE;
+        }
+
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0c2340;
+            margin: 0;
+            flex: 1;
+        }
+
+        .job-tag {
+            background: #418FDE;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .job-tag.thesis {
+            background: #2c7cc9;
+        }
+
+        .job-tag.master {
+            background: #1a5a9e;
+        }
+
+        .job-tag.werkstudent {
+            background: #5ba3e8;
+        }
+
+        .job-details {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .job-location,
+        .job-company {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .job-location .material-icons,
+        .job-company .material-icons {
+            font-size: 1.1rem;
+            color: #418FDE;
+        }
+
+        .job-apply-btn {
+            background: #418FDE;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .job-apply-btn:hover {
+            background: #2c7cc9;
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+            .ueber-uns-hero .hero-title {
+                font-size: 2rem;
+            }
+
+            .ueber-uns-hero .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-description h2 {
+                font-size: 1.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                max-width: 500px;
+            }
+
+            .category-title {
+                font-size: 1.5rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .job-tag {
+                align-self: flex-start;
+            }
+
+            .job-title {
+                font-size: 1.1rem;
+            }
+
+            .job-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .values-grid {
+                gap: 30px;
+                max-width: 900px;
+            }
+
+            .value-card {
+                padding: 0 10px;
+            }
+        }
+
+        /* Filter Tabs Styling */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px auto 50px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .filter-tab {
+            padding: 12px 30px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #0c2340;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab:hover {
+            border-color: #418FDE;
+            color: #418FDE;
+            transform: translateY(-2px);
+        }
+
+        .filter-tab.active {
+            background: #418FDE;
+            color: white;
+            border-color: #418FDE;
+        }
+
+        .job-card.hidden {
+            display: none;
+        }
+
+        .job-category.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .filter-tabs {
+                gap: 10px;
+            }
+
+            .filter-tab {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation wird dynamisch per JavaScript eingefügt -->
+
+    <!-- Hero Section -->
+    <section class="ueber-uns-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Über uns</h1>
+                <p class="hero-subtitle">einfache Assistenz für alle – damit Arbeit verständlicher, flexibler und inklusiver wird</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Description -->
+    <section class="hero-description">
+        <p>Bei delta3 entwickeln wir Assistenz-Software, die den Alltag von Menschen einfacher macht in Werkstätten, Bildungseinrichtungen und Unternehmen.</p>
+
+        <p class="mission-text">Unsere Mission: einfache Assistenz</p>
+
+        <p>Dafür brauchen wir Menschen, die mitgestalten wollen kreative Käpfe, pragmatische Umsetzer:innen und alle, die Lust haben, etwas Sinnvolles zu bewegen. Bei uns arbeitest du in einem Umfeld, in dem Forschung, Praxis und Innovation Hand in Hand gehen.</p>
+
+        <p><strong>Werde Teil von delta3 und gestalte mit uns die Zukunft der einfachen Assistenz.</strong></p>
+    </section>
+
+    <!-- Unsere Werte Section -->
+    <section class="values-section" id="unsere-werte">
+        <div class="container">
+            <h2 class="section-title">Unsere Werte</h2>
+            <div class="section-text">
+                <p>Bei delta3 steht nicht die Software im Vordergrund, sondern der Nutzen für die Menschen, die mit ihr arbeiten. Wir entwickeln Lösungen, die Arbeit einfacher machen, weil sie sich an den Menschen anpassen und nicht umgekehrt.</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-image">
+                        <span class="material-icons">person</span>
+                    </div>
+                    <h3 class="value-title">Der Mensch im Mittelpunkt</h3>
+                    <p class="value-text">Unsere Lösungen entstehen aus den Bedürfnissen der Menschen und nicht umgekehrt.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-image">
+                        <span class="material-icons">lightbulb</span>
+                    </div>
+                    <h3 class="value-title">Einfachheit als Prinzip</h3>
+                    <p class="value-text">Assistenz-Software muss verständlich und leicht nutzbar sein, damit sie im Alltag wirklich unterstützt.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-image">
+                        <span class="material-icons">handshake</span>
+                    </div>
+                    <h3 class="value-title">Zusammenarbeit auf Augenhöhe</h3>
+                    <p class="value-text">Wir arbeiten partnerschaftlich zusammen und respektieren die Expertise jedes Einzelnen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unser Team Section -->
+    <section class="team-section" id="unser-team">
+        <div class="container">
+            <h2 class="section-title">Unser Team</h2>
+            <div class="section-text">
+                <p>Wir bei delta3 entwickeln Assistenz-Software, die den Arbeitsalltag einfacher macht. Unser Team verbindet technisches Know-how mit praktischer Erfahrung und gestaltet Systeme, die intuitiv, zuverlässig und praxisnah sind.</p>
+
+                <p>Dabei haben wir ein gemeinsames Ziel: Einfache Assistenz. Jede Idee, jedes Projekt und jede Lösung entsteht aus der Überzeugung, dass Technologie nur dann sinnvoll ist, wenn sie Menschen wirklich unterstützt.</p>
+
+                <p>Gemeinsam arbeiten wir daran, innovative Lösungen zu schaffen, die flexibel einsetzbar sind und im Alltag sofort einen Unterschied machen.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image"><img src="../assets/members/Eckard.png" alt="Eckard"></div>
+                    <div class="team-name">Eckard</div>
+                    <div class="team-position">Geschäftsführer</div>
+                    <div class="team-description">Eckard verbindet Kunden, Produkt, Finanzen und Marketing – und hält dabei das Ganze im Blick.</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image"><img src="../assets/members/Carsten.png" alt="Carsten"></div>
+                    <div class="team-name">Carsten</div>
+                    <div class="team-position">Berater</div>
+                    <div class="team-description">Carsten begleitet uns in F&E-Projekten und berät zur strategischen Ausrichtung</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image"><img src="../assets/members/Nico.png" alt="Nico"></div>
+                    <div class="team-name">Nico</div>
+                    <div class="team-position">DevOps & Infrastruktur</div>
+                    <div class="team-description">Nico sorgt dafür, dass unsere Infrastruktur stabil läuft und die Cloud-Dienste jederzeit zuverlässig verfügbar sind.</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image"><img src="../assets/members/Farah.png" alt="Farah"></div>
+                    <div class="team-name">Farah</div>
+                    <div class="team-position">Marketing</div>
+                    <div class="team-description">Farah unterstützt unsere Kunden und bringt frische Ideen ins Marketing ein.</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image"><img src="../assets/members/Viktoria.png" alt="Viktoria"></div>
+                    <div class="team-name">Viktoria</div>
+                    <div class="team-position">Business Development</div>
+                    <div class="team-description">Viktoria entwickelt neue Angebote und kümmert sich um die enge Betreuung unserer Kunden</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image"><img src="../assets/members/Marco.png" alt="Marco"></div>
+                    <div class="team-name">Marco</div>
+                    <div class="team-position">Softwareentwickler</div>
+                    <div class="team-description">Marco programmiert im Full-Stack-Bereich mit einem besonderen Fokus auf Funktionen und das Backend</div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">MV</div>
+                    <div class="team-name">Marvin</div>
+                    <div class="team-position">KI Entwickler</div>
+                    <div class="team-description">Marvin konzentriert sich auf moderne Frontend-Lösungen und entwickelt KI-basierte Anwendungen.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offene Stellen Section -->
+    <section class="jobs-section" id="offene-stellen">
+        <div class="container">
+            <h2 class="section-title">Offene Stellen</h2>
+            <div class="section-text">
+                <p>Hier findest du unsere aktuellen Stellenangebote. Bewirb dich jetzt und werde Teil unseres Teams!</p>
+
+                <p>Wir bieten dir Praktika und Abschlussarbeiten verschiedener Längen und Umfänge an. Genau so, wie du es am besten zu dir und deinen Ansprüchen passt. Interessiert?</p>
+
+                <p>Klick auf "Bewerben" und schick uns deinen Lebenslauf!</p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">Alle Stellen</button>
+                <button class="filter-tab" data-category="praktikum">Praktika</button>
+                <button class="filter-tab" data-category="bachelor">Bachelorarbeiten</button>
+                <button class="filter-tab" data-category="master">Masterarbeiten</button>
+                <button class="filter-tab" data-category="werkstudent">Werkstudenten</button>
+            </div>
+
+            <!-- Job Categories -->
+            <div class="jobs-categories">
+                <!-- Praktika Section -->
+                <div class="job-category" id="praktika">
+                    <h3 class="category-title">Praktika</h3>
+                    <div class="jobs-list">
+                        <div class="job-card" data-category="praktikum">
+                            <div class="job-header">
+                                <h4 class="job-title">Praktikum: Softwareentwicklung für Assistenzsysteme (m/w/d)</h4>
+                                <span class="job-tag">Praktikum</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Softwareentwicklung Assistenzsysteme" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+
+                        <div class="job-card" data-category="praktikum">
+                            <div class="job-header">
+                                <h4 class="job-title">Praktikum: UX & Usability – Barrierefreie Interaktion (m/w/d)</h4>
+                                <span class="job-tag">Praktikum</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=UX Usability Barrierefreie Interaktion" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+
+                        <div class="job-card" data-category="praktikum">
+                            <div class="job-header">
+                                <h4 class="job-title">Praktikum: Forschung & Entwicklung – Assistenz in der Bildung</h4>
+                                <span class="job-tag">Praktikum</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Forschung Entwicklung Assistenz Bildung" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+
+                        <div class="job-card" data-category="praktikum">
+                            <div class="job-header">
+                                <h4 class="job-title">Praktikum: Projektmanagement & Forschungstransfer</h4>
+                                <span class="job-tag">Praktikum</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Projektmanagement Forschungstransfer" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bachelorarbeiten Section -->
+                <div class="job-category" id="bachelorarbeiten">
+                    <h3 class="category-title">Bachelorarbeiten</h3>
+                    <div class="jobs-list">
+                        <div class="job-card" data-category="bachelor">
+                            <div class="job-header">
+                                <h4 class="job-title">Bachelorarbeit: Gamification in der Produktion (m/w/d)</h4>
+                                <span class="job-tag thesis">Bachelorarbeit</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Bachelorarbeit Gamification Produktion" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+
+                        <div class="job-card" data-category="bachelor">
+                            <div class="job-header">
+                                <h4 class="job-title">Bachelorarbeit: Evaluation von Inklusionssystemen in Werkstätten</h4>
+                                <span class="job-tag thesis">Bachelorarbeit</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Bachelorarbeit Evaluation Inklusionssysteme" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Masterarbeiten Section -->
+                <div class="job-category" id="masterarbeiten">
+                    <h3 class="category-title">Masterarbeiten</h3>
+                    <div class="jobs-list">
+                        <div class="job-card" data-category="master">
+                            <div class="job-header">
+                                <h4 class="job-title">Masterarbeit: Personalisierte digitale Assistenzlösungen (m/w/d)</h4>
+                                <span class="job-tag master">Masterarbeit</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Masterarbeit Personalisierte Assistenzlösungen" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+
+                        <div class="job-card" data-category="master">
+                            <div class="job-header">
+                                <h4 class="job-title">Masterarbeit: Adaptive Interaktion mit KI in der Produktion</h4>
+                                <span class="job-tag master">Masterarbeit</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Masterarbeit Adaptive KI Produktion" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Werkstudenten Section -->
+                <div class="job-category" id="werkstudenten">
+                    <h3 class="category-title">Werkstudenten</h3>
+                    <div class="jobs-list">
+                        <div class="job-card" data-category="werkstudent">
+                            <div class="job-header">
+                                <h4 class="job-title">Werkstudent (m/w/d): Frontend-Entwicklung React / TypeScript</h4>
+                                <span class="job-tag werkstudent">Werkstudent</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Remote / Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Werkstudent Frontend React TypeScript" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+
+                        <div class="job-card" data-category="werkstudent">
+                            <div class="job-header">
+                                <h4 class="job-title">Werkstudent (m/w/d): Kommunikationsdesign & Leichte Sprache</h4>
+                                <span class="job-tag werkstudent">Werkstudent</span>
+                            </div>
+                            <div class="job-details">
+                                <span class="job-location"><span class="material-icons">location_on</span> Lemgo, DE</span>
+                                <span class="job-company"><span class="material-icons">business</span> delta3 GmbH</span>
+                            </div>
+                            <a href="kontakt-anfragen.html?karriere=true&position=Werkstudent Kommunikationsdesign Leichte Sprache" class="job-apply-btn">Jetzt bewerben</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Produkte Section -->
+                <div class="footer-section">
+                    <h3>Produkte</h3>
+                    <ul>
+                        <li><a href="../produkte/alino.html">Alino</a></li>
+                        <li><a href="../produkte/alinoplanner.html">AlinoPlanner</a></li>
+                        <li><a href="../produkte/xtendplatform.html">Xtend Platform</a></li>
+                        <li><a href="../produkte/individuellesoftware.html">Individuelle Software</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Service & Support Section -->
+                <div class="footer-section">
+                    <h3>Service & Support</h3>
+                    <ul>
+                        <li><a href="../service-support/technischer-support.html">Technischer Support</a></li>
+                        <li><a href="../service-support/produkt-schulungen.html">Produkt-Schulungen</a></li>
+                        <li><a href="../service-support/anwendungsbeitrag.html">Anwendungsbeitrag</a></li>
+                        <li><a href="../service-support/video-tutorials.html">Video Tutorials</a></li>
+                        <li><a href="../service-support/processberatung.html">Processberatung</a></li>
+                        <li><a href="../service-support/integrationberatung.html">Integrationberatung</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Wissen Section -->
+                <div class="footer-section">
+                    <h3>Wissen</h3>
+                    <ul>
+                        <li><a href="../service-support/produkt-schulungen.html">Schulungen & Beratung</a></li>
+                        <li><a href="../wissen/blog-post-1.html">Fallbeispiele</a></li>
+                        <li><a href="../wissen/blog.html">Blog</a></li>
+                        <li><a href="../wissen/whitepaper.html">Whitepaper</a></li>
+                    </ul>
+                </div>
+
+                <!-- Unternehmen Section -->
+                <div class="footer-section">
+                    <h3>Unternehmen</h3>
+                    <ul>
+                        <li><a href="ueber-uns.html">Über uns</a></li>
+                        <li><a href="ueber-uns.html#offene-stellen">Karriere</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kontakt Section -->
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <ul>
+                        <li><a href="kontakt-anfragen.html">Kontakt</a></li>
+                        <li><a href="kontakt-anfragen.html?demo=true">Demo vereinbaren</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Company Information -->
+            <div class="footer-company">
+                <div class="company-info">
+                    <div class="company-name-email">
+                        <h4>delta3 GmbH</h4>
+                        <p>hello(at)delta3.io</p>
+                        <a href="https://www.linkedin.com/company/delta3-io/" aria-label="LinkedIn" class="social-link" target="_blank" rel="noopener" style="margin-top: 10px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="company-address">
+                        <p>Campusallee 6</p>
+                        <p>32657 Lemgo</p>
+                        <p>Deutschland</p>
+                    </div>
+                    <div class="social-links">
+                        <img src="../assets/FuE.png" alt="Forschung und Entwicklung" class="fue-logo">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <span>Copyright © delta3 GmbH 2025</span>
+                    <a href="datenschutz.html">Datenschutzrichtlinie</a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="agb.html">AGBs</a>
+                    <a href="cookies.html">Cookie-Richtlinie</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../js/main.js"></script>
+    <script>
+        // Job Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const jobCards = document.querySelectorAll('.job-card');
+            const jobCategories = document.querySelectorAll('.job-category');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const selectedCategory = this.getAttribute('data-category');
+
+                    // Update active tab
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter job cards
+                    if (selectedCategory === 'all') {
+                        // Show all jobs and all category sections
+                        jobCards.forEach(card => card.classList.remove('hidden'));
+                        jobCategories.forEach(category => category.classList.remove('hidden'));
+                    } else {
+                        // Hide all jobs first
+                        jobCards.forEach(card => {
+                            if (card.getAttribute('data-category') === selectedCategory) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
+                        });
+
+                        // Hide/show category sections based on whether they have visible jobs
+                        jobCategories.forEach(category => {
+                            const visibleJobsInCategory = category.querySelectorAll('.job-card:not(.hidden)');
+                            if (visibleJobsInCategory.length === 0) {
+                                category.classList.add('hidden');
+                            } else {
+                                category.classList.remove('hidden');
+                            }
+                        });
+                    }
+
+                    // Smooth scroll to jobs section
+                    document.querySelector('#offene-stellen').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

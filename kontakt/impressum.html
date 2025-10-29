@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - delta3 GmbH</title>
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Impressum Page Specific Styles */
+        .legal-hero {
+            background: #0c2340;
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .legal-hero .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .legal-hero .hero-subtitle {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .legal-section {
+            margin-bottom: 50px;
+        }
+
+        .legal-section h2 {
+            color: #0c2340;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #418FDE;
+        }
+
+        .legal-section h3 {
+            color: #0c2340;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 30px 0 15px 0;
+        }
+
+        .legal-section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .legal-section strong {
+            color: #0c2340;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .contact-info h3 {
+            color: #0c2340;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .contact-item .material-icons {
+            color: #418FDE;
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .contact-item a {
+            color: #418FDE;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #2c7cc9;
+            text-decoration: underline;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .info-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #418FDE;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #0c2340;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-item span {
+            color: #333;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .legal-hero .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .legal-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .legal-section h3 {
+                font-size: 1.2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation wird dynamisch per JavaScript eingefügt -->
+
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <div class="container">
+            <h1 class="hero-title">Impressum</h1>
+            <p class="hero-subtitle">Angaben gemäß § 5 TMG</p>
+        </div>
+    </section>
+
+    <!-- Legal Content -->
+    <section class="legal-content">
+        <!-- Contact Info Box -->
+        <div class="contact-info">
+            <h3>Kontakt</h3>
+            <div class="contact-item">
+                <span class="material-icons">phone</span>
+                <a href="tel:+4952617080760">+49 5261 7080760</a>
+            </div>
+            <div class="contact-item">
+                <span class="material-icons">location_on</span>
+                <span>Campusallee 6, 32657 Lemgo</span>
+            </div>
+            <div class="contact-item">
+                <span class="material-icons">email</span>
+                <a href="mailto:hello@delta3.io">hello(at)delta3.io</a>
+            </div>
+        </div>
+
+        <!-- Company Information -->
+        <div class="legal-section">
+            <h2>Angaben gemäß § 5 TMG</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>Firma</strong>
+                    <span>delta3 GmbH</span>
+                </div>
+                <div class="info-item">
+                    <strong>Anschrift</strong>
+                    <span>Campusallee 6<br>32657 Lemgo</span>
+                </div>
+                <div class="info-item">
+                    <strong>Handelsregister</strong>
+                    <span>HRB 10458</span>
+                </div>
+                <div class="info-item">
+                    <strong>Registergericht</strong>
+                    <span>Amtsgericht Lemgo</span>
+                </div>
+                <div class="info-item">
+                    <strong>USt-IdNr.</strong>
+                    <span>DE347898976</span>
+                </div>
+                <div class="info-item">
+                    <strong>Vertreten durch</strong>
+                    <span>Eckard Bicker</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="legal-section">
+            <h2>Kontakt</h2>
+            <p>
+                <strong>Telefon:</strong> 05261 7080760<br>
+                <strong>Telefax:</strong> 05222 921250<br>
+                <strong>E-Mail:</strong> hello(at)delta3.io
+            </p>
+        </div>
+
+        <!-- Dispute Resolution -->
+        <div class="legal-section">
+            <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+            <p>
+                Wir sind nicht bereit oder verpflichtet an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+        </div>
+
+        <!-- Legal Disclaimer -->
+        <div class="legal-section">
+            <h2>Ausdrückliche Erklärung</h2>
+            <p>
+                Für Internetseiten, auf die per Hyperlink verwiesen wird, tragen die jeweiligen Anbieter die Verantwortung. delta3 ist für den Inhalt solcher Seiten nicht verantwortlich. Des Weiteren kann die URL www.delta3.io ohne unser Wissen von einem anderen Anbieter mittels Hyperlink verlinkt worden sein. delta3 übernimmt keine Verantwortung für Darstellungen, Inhalte oder irgendeine Verbindung in Webseiten Dritter.
+            </p>
+        </div>
+
+        <!-- License Notice -->
+        <div class="legal-section">
+            <h2>Lizenzhinweis</h2>
+            <p>
+                Auf diversen Seiten des Webauftritts werden Grafiken des Anbieters „Pixabay" verwendet.<br>
+                Internet: <a href="https://pixabay.com/" target="_blank" rel="noopener" style="color: #418FDE; text-decoration: none;">https://pixabay.com/</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer wird dynamisch per JavaScript eingefügt -->
+
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>
