@@ -159,12 +159,22 @@ function prefillFromQuery({ categorySelect, subjectInput, messageTextarea }) {
     const karriereParam = params.get('karriere');
     const positionParam = params.get('position');
 
+    let categoryChanged = false;
+
     if (karriereParam === 'true' || categoryParam === 'karriere') {
         categorySelect.value = 'karriere';
+        categoryChanged = true;
     } else if (demoParam === 'true' || categoryParam === 'demo') {
         categorySelect.value = 'demo';
+        categoryChanged = true;
     } else if (categoryParam && CATEGORY_CONFIG[categoryParam]) {
         categorySelect.value = categoryParam;
+        categoryChanged = true;
+    }
+
+    // Trigger change event if category was set from URL
+    if (categoryChanged) {
+        categorySelect.dispatchEvent(new Event('change'));
     }
 
     if (positionParam) {
