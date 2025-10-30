@@ -5379,18 +5379,6 @@ section, div {
     }
 }
 
-/* Debug helper - remove this after confirming it works */
-@media (max-width: 968px) {
-    .nav-item.mobile-expanded .dropdown-content {
-        outline: 2px solid red !important; /* TEMPORARY - shows the dropdown boundary */
-    }
-    
-    .nav-item.mobile-expanded .dropdown-item-main {
-        outline: 1px solid blue !important; /* TEMPORARY - shows each item boundary */
-    }
-}
-
-
 /* =============================================
    ULTRA FIX - REMOVE ALL HIDING RULES FOR MOBILE EXPANDED
    ============================================= */

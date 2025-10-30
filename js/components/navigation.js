@@ -166,7 +166,6 @@ function setupHomeLink(basePath) {
 
 function setupMobileDropdowns() {
     const dropdownItems = document.querySelectorAll('[data-mobile-dropdown]');
-    console.log('Setting up mobile dropdowns, found:', dropdownItems.length);
 
     dropdownItems.forEach(item => {
         const toggle = item.querySelector('[data-mobile-toggle]');
@@ -174,7 +173,6 @@ function setupMobileDropdowns() {
         const icon = toggle.querySelector('.mobile-toggle-icon');
 
         if (!toggle || !dropdown) {
-            console.warn('Missing toggle or dropdown for item:', item);
             return;
         }
 
@@ -183,8 +181,6 @@ function setupMobileDropdowns() {
             if (window.innerWidth < 1024) {
                 e.preventDefault();
                 e.stopPropagation();
-
-                console.log('Mobile dropdown clicked, window width:', window.innerWidth);
 
                 // Close other dropdowns
                 dropdownItems.forEach(otherItem => {
@@ -198,7 +194,6 @@ function setupMobileDropdowns() {
                 // Toggle current dropdown
                 const isExpanded = item.classList.contains('mobile-expanded');
                 item.classList.toggle('mobile-expanded');
-                console.log('Dropdown expanded:', !isExpanded);
 
                 // Force the dropdown to be visible
                 if (!isExpanded) {
