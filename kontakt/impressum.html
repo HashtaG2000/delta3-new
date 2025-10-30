@@ -169,61 +169,57 @@
 
     <!-- Legal Content -->
     <section class="legal-content">
-        <!-- Contact Info Box -->
-        <div class="contact-info">
-            <h3>Kontakt</h3>
-            <div class="contact-item">
-                <span class="material-icons">phone</span>
-                <a href="tel:+4952617080760">+49 5261 7080760</a>
-            </div>
-            <div class="contact-item">
-                <span class="material-icons">location_on</span>
-                <span>Campusallee 6, 32657 Lemgo</span>
-            </div>
-            <div class="contact-item">
-                <span class="material-icons">email</span>
-                <a href="mailto:hello@delta3.io">hello(at)delta3.io</a>
-            </div>
-        </div>
-
         <!-- Company Information -->
-        <div class="legal-section">
-            <h2>Angaben gemäß § 5 TMG</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <strong>Firma</strong>
-                    <span>delta3 GmbH</span>
-                </div>
-                <div class="info-item">
-                    <strong>Anschrift</strong>
-                    <span>Campusallee 6<br>32657 Lemgo</span>
-                </div>
-                <div class="info-item">
-                    <strong>Handelsregister</strong>
-                    <span>HRB 10458</span>
-                </div>
-                <div class="info-item">
-                    <strong>Registergericht</strong>
-                    <span>Amtsgericht Lemgo</span>
-                </div>
-                <div class="info-item">
-                    <strong>USt-IdNr.</strong>
-                    <span>DE347898976</span>
-                </div>
-                <div class="info-item">
-                    <strong>Vertreten durch</strong>
-                    <span>Eckard Bicker</span>
-                </div>
-            </div>
+        <div class="contact-info">
+            <p style="margin-bottom: 20px;">
+                <strong>delta3 GmbH</strong><br>
+                Campusallee 6<br>
+                32657 Lemgo
+            </p>
+            <p style="margin-bottom: 20px;">
+                Handelsregister: HRB 10458<br>
+                Registergericht: Amtsgericht Lemgo
+            </p>
+            <p style="margin-bottom: 20px;">
+                <strong>Vertreten durch:</strong><br>
+                Eckard Bicker
+            </p>
         </div>
 
         <!-- Contact Details -->
         <div class="legal-section">
             <h2>Kontakt</h2>
             <p>
-                <strong>Telefon:</strong> 05261 7080760<br>
-                <strong>Telefax:</strong> 05222 921250<br>
-                <strong>E-Mail:</strong> hello(at)delta3.io
+                Telefon:
+                <a id="tel-link" href="tel:+4952617080760" rel="nofollow">+49 5261 7080760</a><br>
+                E-Mail:
+                <a id="mail-link" href="#" rel="nofollow">[E-Mail anzeigen]</a>
+            </p>
+            <noscript>
+                <p>
+                    Telefon: +49 5261 7080760<br>
+                    E-Mail: hel&#108;o&#xA0;&#64;&#xA0;del&#116;a3&#46;io
+                </p>
+            </noscript>
+        </div>
+
+        <script>
+            (function () {
+                var user = "hello";
+                var domain = "delta3.io";
+                var email = user + "@" + domain;
+                var link = document.getElementById("mail-link");
+                link.textContent = email;
+                link.href = "mailto:" + email;
+            })();
+        </script>
+
+        <!-- Umsatzsteuer-ID -->
+        <div class="legal-section">
+            <h2>Umsatzsteuer-ID</h2>
+            <p>
+                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+                DE 347 8989 76
             </p>
         </div>
 
@@ -231,24 +227,7 @@
         <div class="legal-section">
             <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
             <p>
-                Wir sind nicht bereit oder verpflichtet an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-            </p>
-        </div>
-
-        <!-- Legal Disclaimer -->
-        <div class="legal-section">
-            <h2>Ausdrückliche Erklärung</h2>
-            <p>
-                Für Internetseiten, auf die per Hyperlink verwiesen wird, tragen die jeweiligen Anbieter die Verantwortung. delta3 ist für den Inhalt solcher Seiten nicht verantwortlich. Des Weiteren kann die URL www.delta3.io ohne unser Wissen von einem anderen Anbieter mittels Hyperlink verlinkt worden sein. delta3 übernimmt keine Verantwortung für Darstellungen, Inhalte oder irgendeine Verbindung in Webseiten Dritter.
-            </p>
-        </div>
-
-        <!-- License Notice -->
-        <div class="legal-section">
-            <h2>Lizenzhinweis</h2>
-            <p>
-                Auf diversen Seiten des Webauftritts werden Grafiken des Anbieters „Pixabay" verwendet.<br>
-                Internet: <a href="https://pixabay.com/" target="_blank" rel="noopener" style="color: #418FDE; text-decoration: none;">https://pixabay.com/</a>
+                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
             </p>
         </div>
     </section>
